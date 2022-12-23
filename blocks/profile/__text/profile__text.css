@@ -1,0 +1,6 @@
+.profile__text{
+  display: flex;
+  flex-direction: column;
+  margin-left: 31px;
+  margin-top: 20px;
+}
