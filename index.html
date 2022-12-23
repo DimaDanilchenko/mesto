@@ -1,29 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./vendor/normalize.css">
-    <link rel="stylesheet" type="text/css" href="./style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./vendor/normalize.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <title>Document</title>
 </head>
 <body class="body">
-    <div class="page">
-        <header class="header">
-            <img class="header__logo" src="./images/Vector.svg" alt="Логотип">
-            <div class="header__line"></div>
-         </header>
-         <main class="content">
-            <div class="profile">
-                <img class="profile__avatar" src="./images/Avatar.png" alt="Аватарка">
-                <div class="profile__info">
-                    <p class="profile__title">Жак-Ив Кусто</p>
-                    <p class="profile__subtitle">Исследователь океана</p>
-                </div>
-                <div class="profile__add-button"></div>
+  <div class="page">
+    <header class="header">
+        <img class="header__logo" src="./images/Vector.svg" alt="Логотип">
+        <div class="header__line"></div>
+      </header>
+      <main class="content">
+        <div class="profile">
+          <div class="profile__info">
+            <img class="profile__avatar" src="./images/Avatar.png" alt="Аватарка">
+            <div class="profile__text">
+              <p class="profile__title">Жак-Ив Кусто</p>
+              <img src="./images/Redaction.svg" alt="Изменить профиль" class="profile__redaction">
             </div>
-         </main>
-    </div>
+            <p class="profile__subtitle">Исследователь океана</p>
+          </div>
+          <button class="profile__add">&plus;</button>
+        </div>
+        <div class="elements">
+          <div class="element">
+            <img src="./images/Mask Group1.png" alt="Карачевск" class="element__image">
+            <img src="./images/Heart.svg" alt="Сердце" class="element__heart">
+            <p class="elements__text">Карачевск</p>
+          </div>
+          <div class="element">
+            <img src="./images/Mask Group2.png" alt="Гора Эльбрус" class="element__image">
+            <img src="./images/Heart.svg" alt="Сердце" class="element__heart">
+            <p class="elements__text">Гора Эльбрус</p>
+          </div>
+          <div class="element">
+            <img src="./images/Mask Group3.png" alt="Домбай" class="element__image">
+            <img src="./images/Heart.svg" alt="Сердце" class="element__heart">
+            <p class="elements__text">Домбай</p>
+          </div>
+          <div class="element">
+            <img src="./images/Mask Group4.png" alt="Гора Эльбрус" class="element__image">
+            <img src="./images/Heart.svg" alt="Сердце" class="element__heart">
+            <p class="elements__text">Гора Эльбрус</p>
+          </div>
+          <div class="element">
+            <img src="./images/Mask Group5.png" alt="Домбай" class="element__image">
+            <img src="./images/Heart.svg" alt="Сердце" class="element__heart">
+            <p class="elements__text">Домбай</p>
+          </div>
+          <div class="element">
+            <img src="./images/Mask Group6.png" alt="Карачаево-Ч..." class="element__image">
+            <img src="./images/Heart.svg" alt="Сердце" class="element__heart">
+            <p class="elements__text">Карачаево-Ч...</p>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <p class="footer__text">© 2022 Mesto Russia</p>
+      </footer>
+  </div>
 </body>
 </html>
