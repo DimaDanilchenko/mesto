@@ -1,4 +1,5 @@
 .popup__name{
   font-family: 'Inter', 'Arial', sans-serif;
-
+  margin: 0;
+  margin-top: 54px;
 }
