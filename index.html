@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="./vendor/normalize.css">
   <link rel="stylesheet" type="text/css" href="./pages/index.css">
-  <title>Document</title>
+  <title>Mesto</title>
 </head>
 <body class="body">
   <div class="page">
@@ -15,19 +15,21 @@
       <div class="header__line"></div>
     </header>
     <main class="content">
-      <div class="profile">
+      <form name="profile-info" class="profile">
         <div class="profile__info">
           <img class="profile__avatar" src="./images/Avatar.png" alt="Аватарка">
           <div class="profile__text">
             <p class="profile__title">Жак-Ив Кусто</p>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
-          <img src="./images/Redaction.svg" alt="Изменить профиль" class="profile__redaction">
+          <button class="profile__redaction">
+            <img src="./images/Redaction.svg" alt="Изменить профиль" >
+          </button>
         </div>
         <button class="profile__add">
           <img src="./images/Add.svg" alt="" class="profile__add_image">
         </button>
-      </div>
+      </form>
       <div class="elements">
         <div class="element">
           <img src="./images/Mask Group1.png" alt="Карачевск" class="element__image">
@@ -67,7 +69,7 @@
         <div class="element">
           <img src="./images/Mask Group6.png" alt="Карачаево-Ч..." class="element__image">
           <div class="element__block">
-            <p class="element__text">Карачаево-Ч...</p>
+            <p class="element__text">Карачаево-Черкессия</p>
             <img src="./images/Heart.svg" alt="Сердце" class="element__heart">
           </div>
         </div>
@@ -77,5 +79,6 @@
       <p class="footer__text">© 2022 Mesto Russia</p>
     </footer>
   </div>
+  <script src="./script.js"></script>
 </body>
 </html>

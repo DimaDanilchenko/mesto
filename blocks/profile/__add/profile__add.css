@@ -6,3 +6,6 @@
   border-radius: 2px;
   background-color: black;
 }
+.profile__add:hover{
+  cursor: pointer;
+}
