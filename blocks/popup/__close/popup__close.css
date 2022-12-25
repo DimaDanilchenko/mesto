@@ -1,3 +1,18 @@
 .popup__close{
-  
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: -40px;
+  right: -40px;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+  background-color: black;
+  border: 0px;
+}
+.popup__close:hover{
+  cursor: pointer;
+  opacity: 0.6;
 }
