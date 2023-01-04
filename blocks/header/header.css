@@ -3,3 +3,9 @@
   margin-top: 45px;
   max-width: calc(100% - 200*2px);
 }
+@media screen and (max-width: 320px) {
+  .header {
+    margin-top: 28px;
+    max-width: 100%;
+  }
+}
