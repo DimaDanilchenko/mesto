@@ -13,5 +13,6 @@
   .popup__container {
     width: 282px;
     height: 322px;
+    padding-bottom: 25px;
   }
 }
