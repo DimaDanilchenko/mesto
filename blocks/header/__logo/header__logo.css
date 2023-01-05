@@ -1,8 +1,17 @@
+.header__logo{
+  width: 142px;
+  height: 33px;
+  object-fit: cover;
+  background-image: url('../../../images/Vector.svg');
+}
 .header__logo:hover{
   cursor: pointer;
 }
 @media screen and (max-width: 320px) {
   .header__logo {
     margin-left: 27px;
+    width: 104px;
+    height: 25px;
+    background-image: url('../../../images/minilogo.svg');
   }
 }
