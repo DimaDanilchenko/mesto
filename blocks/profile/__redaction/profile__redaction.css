@@ -3,10 +3,18 @@
   width: 24px;
   height: 24px;
   margin-left: 22px;
-  margin-top: 36px;
+  margin-top: 18px;
   background-color: black;
 }
 .profile__redaction:hover{
   cursor: pointer;
   opacity: 0.6;
+}
+
+@media screen and (max-width: 320px) {
+  .profile__redaction{
+    margin: 0;
+    margin-left: 10px;
+    align-self: center;
+  }
 }
