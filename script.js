@@ -10,13 +10,6 @@ let formElement = document.querySelector('.profile'),
     popupSave = popup.querySelector('.popup__save'),
     heartTouch = document.querySelector('.element__heart');
 
-function heart(){
-    heartTouch.classList.toggle('element__heart_active');
-}
-heartTouch.addEventListener('click', heart);
-// Находим поля формы в DOM
-//let nameInput = // Воспользуйтесь инструментом .querySelector()
-//let jobInput = // Воспользуйтесь инструментом .querySelector()
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -36,8 +29,6 @@ function addPopupInfo(){
     popupJob.value = profileSubtitle.innerText;
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);
 
 profileRedaction.addEventListener('click', function (){
