@@ -3,6 +3,11 @@
   margin: 0 auto;
   box-sizing: border-box;
 }
+@media screen and (max-width: 420px) {
+  .page {
+    max-width: 420px;
+  }
+}
 @media screen and (max-width: 320px) {
   .page {
     max-width: 320px;
