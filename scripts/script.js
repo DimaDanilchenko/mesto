@@ -30,3 +30,13 @@ function handleFormSubmit (evt) {
 formElement.addEventListener('submit', handleFormSubmit);
 profileRedaction.addEventListener('click',openPopup);
 popupClose.addEventListener('click', closePopup);
+
+//----------------Likes------------------------------
+const likeButtons = Array.from(document.querySelectorAll(".element__heart"));
+
+likeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    button.classList.toggle("element__heart_active");
+  });
+});
+
