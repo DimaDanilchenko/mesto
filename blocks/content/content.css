@@ -9,7 +9,6 @@
 }
 @media screen and (max-width: 425px) {
   .content{
-    margin: 0 auto;
     max-width: calc(100% - 2*19px);
   }
 }

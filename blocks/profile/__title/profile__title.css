@@ -21,8 +21,8 @@
   .profile__title {
     font-size: 27px;
     line-height: 33px;
-    text-align: center;
+    margin-left: 46px;
     color: #FFFFFF;
-    max-width: 189px;
+    width: 189px;
   }
 }
