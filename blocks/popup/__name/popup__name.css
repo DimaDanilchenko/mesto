@@ -12,9 +12,15 @@
   padding: 0;
   border: 0;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 470px) {
   .popup__name {
     width: 238px;
+    
+  }
+}
+@media screen and (max-width: 350px) {
+  .popup__name {
+    width: 200px;
     
   }
 }

@@ -12,9 +12,15 @@
   width: 358px;
   min-height: 27px;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 470px) {
   .popup__job {
     width: 238px;
+    
+  }
+}
+@media screen and (max-width: 350px) {
+  .popup__job {
+    width: 200px;
     
   }
 }
