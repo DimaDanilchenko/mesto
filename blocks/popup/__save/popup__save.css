@@ -24,11 +24,10 @@
 @media screen and (max-width: 470px) {
   .popup__save {
     width: 238px;
+    margin-top: 45px;
     margin-bottom: 25px;
-  }
-}
-@media screen and (max-width: 350px) {
-  .popup__save {
-    width: 200px;
+    padding-bottom: 14px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

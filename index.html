@@ -84,12 +84,12 @@
           <button class="popup__close">
             <img class="popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
           </button>
-          <p class="popup__title">Редактировать профиль</p>
-          <input type="text" class="popup__name">
-          <div class="popup__line"></div>
-          <input type="text" class="popup__job">
-          <div class="popup__line"></div>
-          <button class="popup__save">Сохранить</button>
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <form name="popupForm" method="post" class="popup__form">
+            <input type="text" class="popup__name" name="popupName">
+            <input type="text" class="popup__job" name="popupJob">
+            <button class="popup__save">Сохранить</button>
+          </form>
       </div>
     </div>
   </div>
