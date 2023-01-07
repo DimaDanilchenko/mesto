@@ -3,7 +3,7 @@
   flex-direction: row;
 
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
   .profile__text {
     margin: 0 auto;
   }

@@ -4,8 +4,9 @@
   margin-left: 31px;
   margin-top: 20px;
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
   .profile__account {
+    margin: 0 auto;
     margin-top: 26px;
   }
 }

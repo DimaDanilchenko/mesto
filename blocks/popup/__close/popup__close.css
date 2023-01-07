@@ -9,14 +9,14 @@
   overflow: hidden;
   object-fit: cover;
   object-position: center;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   border: 0px;
 }
 .popup__close:hover{
   cursor: pointer;
   opacity: 0.6;
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
   .popup__close{
     width: 20px;
     height: 20px;

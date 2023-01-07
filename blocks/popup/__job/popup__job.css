@@ -12,7 +12,7 @@
   width: 358px;
   min-height: 27px;
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 425px) {
   .popup__job {
     width: 238px;
     
