@@ -9,7 +9,12 @@
   max-width: 336px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden; 
+  overflow: hidden;
+}
+@media screen and (max-width: 560px) {
+  .profile__subtitle{
+    max-width: 210px;
+  }
 }
 @media screen and (max-width: 425px) {
   .profile__subtitle{
