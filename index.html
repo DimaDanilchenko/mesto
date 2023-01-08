@@ -13,70 +13,69 @@
       <div class="header__logo"></div>
     </header>
     <main class="content">
-      <form name="profile-info" class="profile">
-        <div class="profile__info">
-          <img class="profile__avatar" src="./images/Avatar.png" alt="Аватарка">
-          <div class="profile__account">
-            <div class="profile__text">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__redaction" type="button" aria-label="profile-redaction">
-                <img src="./images/Redaction.svg" alt="Изменить профиль" class="profile__redaction-image">
-              </button>
+      <section class="section-profile">
+        <form name="profile-info" class="profile">
+          <div class="profile__info">
+            <img class="profile__avatar" src="./images/Avatar.png" alt="Аватарка">
+            <div class="profile__account">
+              <div class="profile__text">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button class="profile__redaction" type="button" aria-label="profile-redaction">
+                  <img src="./images/Redaction.svg" alt="Изменить профиль" class="profile__redaction-image">
+                </button>
+              </div>
+              <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <h2 class="profile__subtitle">Исследователь океана</h2>
+          </div>
+          <button class="profile__add" type="button">
+            <img src="./images/Add.svg" alt="Добавить фото">
+          </button>
+        </form>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img src="./images/Mask_Group1.png" alt="Карачевск" class="element__image">
+          <div class="element__block">
+            <h2 class="element__text">Карачевск</h2>
+            <button class="element__heart" type="button"></button>
           </div>
         </div>
-        <button class="profile__add" type="button">
-          <img src="./images/Add.svg" alt="Добавить фото">
-        </button>
-      </form>
-      <div class="section">
-        <div class="elements">
-          <div class="element">
-            <img src="./images/Mask_Group1.png" alt="Карачевск" class="element__image">
-            <div class="element__block">
-              <h4 class="element__text">Карачевск</h4>
-              <button class="element__heart" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img src="./images/Mask_Group2.png" alt="Гора Эльбрус" class="element__image">
-            <div class="element__block">
-              <h4 class="element__text">Гора Эльбрус</h4>
-              <button class="element__heart" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img src="./images/Mask_Group3.png" alt="Домбай" class="element__image">
-            <div class="element__block">
-              <h4 class="element__text">Домбай</h4>
-              <button class="element__heart" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img src="./images/Mask_Group4.png" alt="Гора Эльбрус" class="element__image">
-            <div class="element__block">
-              <h4 class="element__text">Гора Эльбрус</h4>
-              <button class="element__heart" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img src="./images/Mask_Group5.png" alt="Домбай" class="element__image">
-            <div class="element__block">
-              <h4 class="element__text">Домбай</h4>
-              <button class="element__heart" type="button"></button>
-            </div>
-          </div>
-          <div class="element">
-            <img src="./images/Mask_Group6.png" alt="Карачаево-Черкессия" class="element__image">
-            <div class="element__block">
-              <h4 class="element__text">Карачаево-Черкессия</h4>
-              <button class="element__heart" type="button"></button>
-            </div>
+        <div class="element">
+          <img src="./images/Mask_Group2.png" alt="Гора Эльбрус" class="element__image">
+          <div class="element__block">
+            <h2 class="element__text">Гора Эльбрус</h2>
+            <button class="element__heart" type="button"></button>
           </div>
         </div>
-      </div>
-
+        <div class="element">
+          <img src="./images/Mask_Group3.png" alt="Домбай" class="element__image">
+          <div class="element__block">
+            <h2 class="element__text">Домбай</h2>
+            <button class="element__heart" type="button"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Mask_Group4.png" alt="Гора Эльбрус" class="element__image">
+          <div class="element__block">
+            <h2 class="element__text">Гора Эльбрус</h2>
+            <button class="element__heart" type="button"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Mask_Group5.png" alt="Домбай" class="element__image">
+          <div class="element__block">
+            <h2 class="element__text">Домбай</h2>
+            <button class="element__heart" type="button"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img src="./images/Mask_Group6.png" alt="Карачаево-Черкессия" class="element__image">
+          <div class="element__block">
+            <h2 class="element__text">Карачаево-Черкессия</h2>
+            <button class="element__heart" type="button"></button>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2022 Mesto Russia</p>
@@ -88,8 +87,8 @@
           </button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <form name="popupForm" method="post" class="popup__form">
-            <input type="text" class="popup__name" name="popupName">
-            <input type="text" class="popup__job" name="popupJob">
+            <input type="text" class="popup__input popup__input_name" name="popupName" placeholder="Имя">
+            <input type="text" class="popup__input popup__input_job" name="popupJob" placeholder="О себе">
             <button class="popup__save" type="submit">Сохранить</button>
           </form>
       </div>
