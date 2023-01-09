@@ -6,8 +6,8 @@ const formElement = document.querySelector('.popup__form'),
       profileRedaction = document.querySelector('.profile__redaction'),
       popupClose = document.querySelector('.popup__close'),
 // Находим поля формы в DOM
-      nameInput = document.querySelector('.popup__input_name'),
-      jobInput = document.querySelector('.popup__input_job');
+      nameInput = document.querySelector('.popup__input_type_name'),
+      jobInput = document.querySelector('.popup__input_type_job');
 
 function openPopup(){
   popup.classList.add('popup_opened');

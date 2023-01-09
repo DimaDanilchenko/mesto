@@ -14,7 +14,7 @@
     </header>
     <main class="content">
       <section class="section-profile">
-        <form name="profile-info" class="profile">
+        <div class="profile">
           <div class="profile__info">
             <img class="profile__avatar" src="./images/Avatar.png" alt="Аватарка">
             <div class="profile__account">
@@ -30,7 +30,7 @@
           <button class="profile__add" type="button">
             <img src="./images/Add.svg" alt="Добавить фото">
           </button>
-        </form>
+        </div>
       </section>
       <section class="elements">
         <div class="element">
@@ -87,8 +87,8 @@
           </button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <form name="popupForm" method="post" class="popup__form">
-            <input type="text" class="popup__input popup__input_name" name="popupName" placeholder="Имя">
-            <input type="text" class="popup__input popup__input_job" name="popupJob" placeholder="О себе">
+            <input type="text" class="popup__input popup__input_type_name" name="popupName" placeholder="Имя">
+            <input type="text" class="popup__input popup__input_type_job" name="popupJob" placeholder="О себе">
             <button class="popup__save" type="submit">Сохранить</button>
           </form>
       </div>
