@@ -2,7 +2,8 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  max-width: 282px;
+  width: 282px;
   border-radius: 10px;
   max-height: 361px;
+  overflow: hidden;
 }

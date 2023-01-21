@@ -7,7 +7,47 @@ const formElement = document.querySelector('.popup__form'),
       popupClose = document.querySelector('.popup__close'),
 // Находим поля формы в DOM
       nameInput = document.querySelector('.popup__input_type_name'),
-      jobInput = document.querySelector('.popup__input_type_job');
+      jobInput = document.querySelector('.popup__input_type_job'),
+      photoElements = document.querySelector('.elements');
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+const userPhotos = document.querySelector('#element-template').content;
+
+function renderPhoto(a){
+  const userPhotos = document.querySelector('#element-template').content;
+  const userPhoto = userPhotos.querySelector('.element').cloneNode(true);
+  userPhoto.querySelector('.element__image').src = a[0].link;
+  userPhoto.querySelector('.element__text').textContent = a[0].name;
+  userPhoto.querySelector('.element__image').alt = a[0].name;
+  photoElements.prepend(userPhoto);
+}
+renderPhoto(initialCards);
 
 function openPopup(){
   popup.classList.add('popup_opened');
