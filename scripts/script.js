@@ -17,10 +17,9 @@ function openPopup(){
 function closePopup() {
   popup.classList.remove('popup_opened');
 };
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+
 function handleFormSubmit (evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+  evt.preventDefault();
   profileTitle.innerText =  nameInput.value;
   profileSubtitle.innerText = jobInput.value;
   closePopup();
