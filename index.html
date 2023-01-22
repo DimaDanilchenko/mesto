@@ -55,11 +55,21 @@
   </div>
   <template id="element-template">
     <div class="element">
+      <button class="element__delete" type="button"></button>
       <img alt="photo" class="element__image">
       <div class="element__block">
         <h2 class="element__text"></h2>
         <button class="element__heart" type="button"></button>
       </div>
+    </div>
+  </template>
+  <template id="photo-zoom">
+    <div class="photo-zoom">
+      <button class="popup__close" aria-label="popup-close">
+        <img class="popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
+      </button>
+      <img alt="photo" class="element__image">
+      <h2 class="element__text"></h2>
     </div>
   </template>
   <script src="./scripts/script.js"></script>
