@@ -1,13 +1,18 @@
 // Находим форму в DOM
 const formElement = document.querySelector('.popup__form'),
+      formAddPhoto = document.querySelector('.add-photo-popup__form'),
       profileTitle = document.querySelector('.profile__title'),
       profileSubtitle = document.querySelector('.profile__subtitle'),
       popup = document.querySelector('.popup'),
+      popupAdd = document.querySelector('.add-photo-popup'),
       profileRedaction = document.querySelector('.profile__redaction'),
       popupClose = document.querySelector('.popup__close'),
+      popupCloseAdd = document.querySelector('.add-photo-popup__close'),
 // Находим поля формы в DOM
       nameInput = document.querySelector('.popup__input_type_name'),
       jobInput = document.querySelector('.popup__input_type_job'),
+      namePhotoInput = document.querySelector('.add-photo-popup__input_type_name-photo'),
+      linkInput = document.querySelector('.add-photo-popup__input_type_link'),
       photoElements = document.querySelector('.elements'),
       addPhoto = document.querySelector('.profile__add');
 
@@ -57,36 +62,48 @@ function renderPhoto(element){
   photoElements.prepend(userPhoto);
 };
 
-function openPopup(){
-  popup.classList.add('popup_opened');
+function openPopup(element){
+  element.classList.add('popup-open');
 
 };
-function closePopup() {
-  popup.classList.remove('popup_opened');
+function closePopup(element) {
+  element.classList.remove('popup-open');
 };
 
-function handleFormSubmit (evt) {
+function handleFormSubmit (evt, popupElement) {
   evt.preventDefault();
-  closePopup();
+  closePopup(popupElement);
 };
 function profileChange(){
   profileTitle.innerText =  nameInput.value;
   profileSubtitle.innerText = jobInput.value;
 };
+
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', (evt)=>{
-  handleFormSubmit(evt);
+  handleFormSubmit(evt, popup);
 });
+formAddPhoto.addEventListener('submit', (evt)=>{
+  handleFormSubmit(evt, popupAdd);
+});
+
 profileRedaction.addEventListener('click', ()=>{
-  openPopup();
+  openPopup(popup);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   popup.querySelector('.popup__save').addEventListener('click', ()=>{
     profileChange();
   })
 });
-popupClose.addEventListener('click', closePopup);
+
+popupClose.addEventListener('click', function(){
+  closePopup(popup);
+});
+
+popupCloseAdd.addEventListener('click', function(){
+  closePopup(popupAdd);
+});
 
 //----------------Likes------------------------------
 const likeButtons = Array.from(document.querySelectorAll(".element__heart"));
@@ -98,31 +115,26 @@ likeButtons.forEach((evt) => {
 });
 
 //---------------------Add-Photo-----------------------
-addPhoto.addEventListener('click', function(){
-  openPopup();
-  popup.querySelector('.popup__title').textContent = 'Новое место';
-  popup.querySelector('.popup__input_type_name').placeholder = 'Название';
-  popup.querySelector('.popup__input_type_job').placeholder = 'Ссылка на скачивание';
-  nameInput.value = '';
-  jobInput.value = '';
-  popup.querySelector('.popup__save').addEventListener('click', ()=>{
+addPhoto.addEventListener('click', (evt) => {
+  openPopup(popupAdd);
+  popupAdd.querySelector('.add-photo-popup__save').addEventListener('click', ()=>{
     let addObjPhoto = {};
-    addObjPhoto.name = nameInput.value;
-    addObjPhoto.link = jobInput.value;
+    addObjPhoto.name = namePhotoInput.value;
+    addObjPhoto.link = linkInput.value;
     console.log(addObjPhoto);
     initialCards.unshift(addObjPhoto);
-    console.log(initialCards);
     renderPhoto(addObjPhoto);
+    namePhotoInput.value = '';
+    linkInput.value = '';
   })
+
 })
 //------------------Delete-Photo--------------------------
 const elementDelete = Array.from(document.querySelectorAll(".element__delete"));
 const element = document.querySelectorAll('.element');
 elementDelete.forEach((evt, index) => {
   evt.addEventListener("click", () => {
-    console.log(index);
     initialCards.splice(index, 1);
-    console.log(initialCards);
     element[index].parentNode.removeChild(element[index]);
   });
 });
@@ -132,6 +144,7 @@ const elementImage = Array.from(document.querySelectorAll(".element__image"));
 elementImage.forEach((evt, index) => {
   evt.addEventListener("click", () => {
     console.log(index);
+    console.log(evt);
 
   });
 });

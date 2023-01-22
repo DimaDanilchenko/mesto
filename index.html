@@ -39,6 +39,7 @@
     <footer class="footer">
       <p class="footer__text">© 2023 Mesto Russia</p>
     </footer>
+
     <div class="popup">
       <div class="popup__container">
           <button class="popup__close" aria-label="popup-close">
@@ -52,7 +53,32 @@
           </form>
       </div>
     </div>
+
+    <div class="add-photo-popup">
+      <div class="add-photo-popup__container">
+          <button class="add-photo-popup__close" aria-label="add-photo-popup-close">
+            <img class="add-photo-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
+          </button>
+          <h3 class="add-photo-popup__title">Новое место</h3>
+          <form name="popupFormAddImage" method="post" class="add-photo-popup__form">
+            <input type="text" class="popup__input add-photo-popup__input_type_name-photo" name="popupNamePhoto" placeholder="Название">
+            <input type="text" class="popup__input add-photo-popup__input_type_link" name="popupLink" placeholder="Ссылка на скачивание">
+            <button class="add-photo-popup__save" type="submit">Сохранить</button>
+          </form>
+      </div>
+    </div>
+
+    <div class="photo-popup">
+      <button class="photo-popup__close" aria-label="photo-popup-close">
+        <img class="photo-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
+      </button>
+      <img alt="photo" class="photo-popup__photo" src="">
+      <h2 class="popup-photo__text"></h2>
+    </div>
   </div>
+
+
+
   <template id="element-template">
     <div class="element">
       <button class="element__delete" type="button"></button>
@@ -61,15 +87,6 @@
         <h2 class="element__text"></h2>
         <button class="element__heart" type="button"></button>
       </div>
-    </div>
-  </template>
-  <template id="photo-zoom">
-    <div class="photo-zoom">
-      <button class="popup__close" aria-label="popup-close">
-        <img class="popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
-      </button>
-      <img alt="photo" class="element__image">
-      <h2 class="element__text"></h2>
     </div>
   </template>
   <script src="./scripts/script.js"></script>

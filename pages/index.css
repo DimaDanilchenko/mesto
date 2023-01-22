@@ -43,3 +43,19 @@
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__form/popup__form.css);
+
+@import url(../blocks/photo-popup/photo-popup.css);
+@import url(../blocks/photo-popup/__close/photo-popup__close.css);
+@import url(../blocks/photo-popup/__image/photo-popup__image.css);
+@import url(../blocks/photo-popup/__photo/photo-popup__photo.css);
+@import url(../blocks/photo-popup/__text/photo-popup__text.css);
+
+@import url(../blocks/add-photo-popup/add-photo-popup.css);
+@import url(../blocks/add-photo-popup/__close/add-photo-popup__close.css);
+@import url(../blocks/add-photo-popup/__container/add-photo-popup__container.css);
+@import url(../blocks/add-photo-popup/__form/add-photo-popup__form.css);
+@import url(../blocks/add-photo-popup/__image/add-photo-popup__image.css);
+@import url(../blocks/add-photo-popup/__save/add-photo-popup__save.css);
+@import url(../blocks/add-photo-popup/__title/add-photo-popup__title.css);
+
+@import url(../blocks/popup-open/popup-open.css);
