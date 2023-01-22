@@ -8,7 +8,8 @@ const formElement = document.querySelector('.popup__form'),
 // Находим поля формы в DOM
       nameInput = document.querySelector('.popup__input_type_name'),
       jobInput = document.querySelector('.popup__input_type_job'),
-      photoElements = document.querySelector('.elements');
+      photoElements = document.querySelector('.elements'),
+      addPhoto = document.querySelector('.profile__add');
 
 const initialCards = [
   {
@@ -39,15 +40,14 @@ const initialCards = [
 
 const userPhotos = document.querySelector('#element-template').content;
 
-function renderPhoto(a){
-  const userPhotos = document.querySelector('#element-template').content;
+initialCards.forEach((element) => {
   const userPhoto = userPhotos.querySelector('.element').cloneNode(true);
-  userPhoto.querySelector('.element__image').src = a[0].link;
-  userPhoto.querySelector('.element__text').textContent = a[0].name;
-  userPhoto.querySelector('.element__image').alt = a[0].name;
+  userPhoto.querySelector('.element__image').src = element.link;
+  userPhoto.querySelector('.element__text').textContent = element.name;
+  userPhoto.querySelector('.element__image').alt = element.name;
   photoElements.prepend(userPhoto);
-}
-renderPhoto(initialCards);
+});
+
 
 function openPopup(){
   popup.classList.add('popup_opened');
@@ -73,9 +73,16 @@ popupClose.addEventListener('click', closePopup);
 //----------------Likes------------------------------
 const likeButtons = Array.from(document.querySelectorAll(".element__heart"));
 
-likeButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    button.classList.toggle("element__heart_active");
+likeButtons.forEach((evt) => {
+  evt.addEventListener("click", () => {
+    evt.classList.toggle("element__heart_active");
   });
 });
 
+//---------------------Add-Photo-----------------------
+addPhoto.addEventListener('click', function(){
+  popup.classList.add('popup_opened');
+  popup.querySelector('.popup__title').textContent = 'Новое место';
+  popup.querySelector('.popup__input_type_name').placeholder = 'Название';
+
+})
