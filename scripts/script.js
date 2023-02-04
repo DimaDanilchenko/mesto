@@ -43,7 +43,8 @@ const initialCards = [
   }
 ];
 
-const userPhotos = document.querySelector('#element-template').content;
+const userPhotos = document.querySelector('#element-template').content,
+popupPhoto = document.querySelector('.photo-popup');
 
 initialCards.forEach((element) => {
   const userPhoto = userPhotos.querySelector('.element').cloneNode(true);
@@ -117,15 +118,15 @@ likeButtons.forEach((evt) => {
 //---------------------Add-Photo-----------------------
 addPhoto.addEventListener('click', (evt) => {
   openPopup(popupAdd);
+  const addObjPhoto = {};
   popupAdd.querySelector('.add-photo-popup__save').addEventListener('click', ()=>{
-    let addObjPhoto = {};
     addObjPhoto.name = namePhotoInput.value;
     addObjPhoto.link = linkInput.value;
-    console.log(addObjPhoto);
     initialCards.unshift(addObjPhoto);
     renderPhoto(addObjPhoto);
-    namePhotoInput.value = '';
-    linkInput.value = '';
+    delete addObjPhoto.name;
+    delete addObjPhoto.link;
+    console.log(addObjPhoto);
   })
 
 })
@@ -144,7 +145,11 @@ const elementImage = Array.from(document.querySelectorAll(".element__image"));
 elementImage.forEach((evt, index) => {
   evt.addEventListener("click", () => {
     console.log(index);
-    console.log(evt);
-
+    console.log(evt.attributes.src);
+    console.log(evt.alt)
+    openPopup(popupPhoto);
+    popupPhoto.querySelector('.photo-popup__photo').src = evt.attributes.src.nodeValue;
+    popupPhoto.querySelector('.popup-photo__text').textContent = evt.alt;
+    console.log(popupPhoto);
   });
 });
