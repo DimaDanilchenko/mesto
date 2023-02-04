@@ -11,8 +11,8 @@ const formElement = document.querySelector('.popup__form'),
 // Находим поля формы в DOM
       nameInput = document.querySelector('.popup__input_type_name'),
       jobInput = document.querySelector('.popup__input_type_job'),
-      namePhotoInput = document.querySelector('.add-photo-popup__input_type_name-photo'),
-      linkInput = document.querySelector('.add-photo-popup__input_type_link'),
+      namePhotoInput = document.querySelector('.popup__input_type_name-photo'),
+      linkInput = document.querySelector('.popup__input_type_link'),
       photoElements = document.querySelector('.elements'),
       addPhoto = document.querySelector('.profile__add');
 
