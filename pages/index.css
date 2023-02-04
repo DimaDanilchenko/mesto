@@ -57,6 +57,7 @@
 @import url(../blocks/add-photo-popup/__image/add-photo-popup__image.css);
 @import url(../blocks/add-photo-popup/__save/add-photo-popup__save.css);
 @import url(../blocks/add-photo-popup/__title/add-photo-popup__title.css);
+@import url(../blocks/add-photo-popup/__input/add-photo-popup__input.css);
 @import url(../blocks/photo-popup/__container/photo-popup__container.css);
 
 @import url(../blocks/popup-open/popup-open.css);
