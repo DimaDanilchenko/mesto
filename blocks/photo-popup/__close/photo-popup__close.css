@@ -10,4 +10,5 @@
   object-position: center;
   background-color: rgba(0, 0, 0, 0);
   border: 0px;
+  cursor: pointer;
 }

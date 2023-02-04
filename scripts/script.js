@@ -144,12 +144,11 @@ elementDelete.forEach((evt, index) => {
 const elementImage = Array.from(document.querySelectorAll(".element__image"));
 elementImage.forEach((evt, index) => {
   evt.addEventListener("click", () => {
-    console.log(index);
-    console.log(evt.attributes.src);
-    console.log(evt.alt)
     openPopup(popupPhoto);
     popupPhoto.querySelector('.photo-popup__photo').src = evt.attributes.src.nodeValue;
-    popupPhoto.querySelector('.popup-photo__text').textContent = evt.alt;
-    console.log(popupPhoto);
+    popupPhoto.querySelector('.photo-popup__text').textContent = evt.alt;
+    document.querySelector('.photo-popup__close').addEventListener('click', ()=>{
+      closePopup(popupPhoto);
+    })
   });
 });
