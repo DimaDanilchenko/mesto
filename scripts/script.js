@@ -15,7 +15,7 @@ const formElement = document.querySelector('.popup__form'),
       linkInput = document.querySelector('.popup__input_type_link'),
       photoElements = document.querySelector('.elements'),
       addPhoto = document.querySelector('.profile__add');
-
+console.log(namePhotoInput);
 const initialCards = [
   {
     name: 'Архыз',
