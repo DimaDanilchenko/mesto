@@ -9,10 +9,10 @@ const formElement = document.querySelector('.profile-popup__form'),
       popupClose = document.querySelector('.profile-popup__close'),
       popupCloseAdd = document.querySelector('.add-photo-popup__close'),
 // Находим поля формы в DOM
-      nameInput = document.querySelector('.popup__input_type_name'),
-      jobInput = document.querySelector('.popup__input_type_job'),
-      namePhotoInput = document.querySelector('.popup__input_type_photo'),
-      linkInput = document.querySelector('.popup__input_type_link'),
+      nameInput = document.querySelector('.profile-popup__input_type_name'),
+      jobInput = document.querySelector('.profile-popup__input_type_job'),
+      namePhotoInput = document.querySelector('.add-photo-popup__input_type_photo'),
+      linkInput = document.querySelector('.add-photo-popup__input_type_link'),
       photoElements = document.querySelector('.elements'),
       addPhoto = document.querySelector('.profile__add');
 
