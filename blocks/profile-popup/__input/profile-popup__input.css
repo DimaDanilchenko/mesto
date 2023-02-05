@@ -1,4 +1,4 @@
-.popup__input{
+.profile-popup__input{
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -12,21 +12,21 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.popup__input:first-child{
+.profile-popup__input:first-child{
   margin-top: 44px;
 }
-.popup__input:nth-child(2){
+.profile-popup__input:nth-child(2){
   margin-top: 30px;
 }
 
 @media screen and (max-width: 470px) {
-  .popup__input {
+  .profile-popup__input {
     width: 238px;
   }
-  .popup__input:first-child{
+  .profile-popup__input:first-child{
     margin-top: 72px;
   }
-  .popup__input:nth-child(2){
+  .profile-popup__input:nth-child(2){
     margin-top: 30px;
   }
 }

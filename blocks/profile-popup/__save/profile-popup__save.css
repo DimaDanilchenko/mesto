@@ -1,4 +1,4 @@
-.popup__save{
+.profile-popup__save{
   margin: 0 auto;
   margin-top: 48px;
   width: 358px;
@@ -17,12 +17,12 @@
   padding-top: 14px;
   padding-bottom: 18px;
 }
-.popup__save:hover{
+.profile-popup__save:hover{
   cursor: pointer;
   opacity: 0.8;
 }
 @media screen and (max-width: 470px) {
-  .popup__save {
+  .profile-popup__save {
     width: 238px;
     margin-top: 45px;
     margin-bottom: 25px;

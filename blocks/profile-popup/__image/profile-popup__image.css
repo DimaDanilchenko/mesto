@@ -1,6 +1,7 @@
 @media screen and (max-width: 425px) {
-  .popup__image {
+  .profile-popup__image {
     width: 20px;
     height: 20px;
   }
 }
+

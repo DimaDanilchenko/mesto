@@ -1,12 +1,12 @@
 // Находим форму в DOM
-const formElement = document.querySelector('.popup__form'),
+const formElement = document.querySelector('.profile-popup__form'),
       formAddPhoto = document.querySelector('.add-photo-popup__form'),
       profileTitle = document.querySelector('.profile__title'),
       profileSubtitle = document.querySelector('.profile__subtitle'),
-      popup = document.querySelector('.popup'),
+      popup = document.querySelector('.profile-popup'),
       popupAdd = document.querySelector('.add-photo-popup'),
       profileRedaction = document.querySelector('.profile__redaction'),
-      popupClose = document.querySelector('.popup__close'),
+      popupClose = document.querySelector('.profile-popup__close'),
       popupCloseAdd = document.querySelector('.add-photo-popup__close'),
 // Находим поля формы в DOM
       nameInput = document.querySelector('.popup__input_type_name'),
@@ -93,7 +93,7 @@ profileRedaction.addEventListener('click', ()=>{
   openPopup(popup);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  popup.querySelector('.popup__save').addEventListener('click', ()=>{
+  popup.querySelector('.profile-popup__save').addEventListener('click', ()=>{
     profileChange();
   })
 });
