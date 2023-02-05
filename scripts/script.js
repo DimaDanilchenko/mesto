@@ -15,7 +15,7 @@ const formElement = document.querySelector('.popup__form'),
       linkInput = document.querySelector('.popup__input_type_link'),
       photoElements = document.querySelector('.elements'),
       addPhoto = document.querySelector('.profile__add');
-console.log(namePhotoInput);
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -120,6 +120,7 @@ addPhoto.addEventListener('click', (evt) => {
   openPopup(popupAdd);
   const addObjPhoto = {};
   popupAdd.querySelector('.add-photo-popup__save').addEventListener('click', ()=>{
+    console.log(namePhotoInput);
     addObjPhoto.name = namePhotoInput.value;
     addObjPhoto.link = linkInput.value;
     initialCards.unshift(addObjPhoto);
