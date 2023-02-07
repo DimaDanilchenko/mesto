@@ -50,11 +50,6 @@ initialCards.forEach((item) => {
   photoElements.append(createCard(item));
 });
 
-// Появление карточек
-function renderPhoto(item){
-  photoElements.prepend();
-};
-
 function openPopup(element){
   element.classList.add('popup_open');
 };
@@ -123,7 +118,7 @@ function createCard(item) {
   userPhoto.querySelector('.element__text').textContent = item.name;
 
   userPhoto.querySelector('.element__heart').addEventListener("click", () => {
-    evt.classList.toggle("element__heart_active");
+    userPhoto.querySelector('.element__heart').classList.toggle("element__heart_active");
   });
 
   userPhoto.querySelector('.element__image').addEventListener("click", () => {
