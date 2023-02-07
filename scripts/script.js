@@ -1,13 +1,13 @@
 // Находим форму в DOM
-const formElement = document.querySelector('.profile-popup__form'),
+const profileForm = document.querySelector('.profile-popup__form'),
       formAddPhoto = document.querySelector('.add-photo-popup__form'),
       profileTitle = document.querySelector('.profile__title'),
       profileSubtitle = document.querySelector('.profile__subtitle'),
-      popup = document.querySelector('.profile-popup'),
+      profilePopup = document.querySelector('.profile-popup'),
       popupAdd = document.querySelector('.add-photo-popup'),
       profileRedaction = document.querySelector('.profile__redaction'),
-      popupClose = document.querySelector('.profile-popup__close'),
       popupCloseAdd = document.querySelector('.add-photo-popup__close'),
+      elementDelete = document.querySelectorAll('element__delete'),
 // Находим поля формы в DOM
       nameInput = document.querySelector('.profile-popup__input_type_name'),
       jobInput = document.querySelector('.profile-popup__input_type_job'),
@@ -43,32 +43,33 @@ const initialCards = [
   }
 ];
 
-const userPhotos = document.querySelector('#element-template').content,
+const cardTemplate = document.querySelector('#element-template').content,
 popupPhoto = document.querySelector('.photo-popup');
-
-initialCards.forEach((element) => {
-  const userPhoto = userPhotos.querySelector('.element').cloneNode(true);
-  userPhoto.querySelector('.element__image').src = element.link;
-  userPhoto.querySelector('.element__text').textContent = element.name;
-  userPhoto.querySelector('.element__image').alt = element.name;
-  photoElements.append(userPhoto);
+// Просмотр массива
+initialCards.forEach((item) => {
+  photoElements.append(createCard(item));
 });
 
-
-function renderPhoto(element){
-  const userPhoto = userPhotos.querySelector('.element').cloneNode(true);
-  userPhoto.querySelector('.element__image').src = element.link;
-  userPhoto.querySelector('.element__text').textContent = element.name;
-  userPhoto.querySelector('.element__image').alt = element.name;
-  photoElements.prepend(userPhoto);
+// Появление карточек
+function renderPhoto(item){
+  photoElements.prepend();
 };
 
 function openPopup(element){
-  element.classList.add('popup-open');
-
+  element.classList.add('popup_open');
 };
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__close');
+
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
+
 function closePopup(element) {
-  element.classList.remove('popup-open');
+  element.classList.remove('popup_open');
 };
 
 function handleFormSubmit (evt, popupElement) {
@@ -82,38 +83,26 @@ function profileChange(){
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', (evt)=>{
-  handleFormSubmit(evt, popup);
+profileForm.addEventListener('submit', (evt)=>{
+  handleFormSubmit(evt, profilePopup);
 });
 formAddPhoto.addEventListener('submit', (evt)=>{
   handleFormSubmit(evt, popupAdd);
 });
 
 profileRedaction.addEventListener('click', ()=>{
-  openPopup(popup);
+  openPopup(profilePopup);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  popup.querySelector('.profile-popup__save').addEventListener('click', ()=>{
+  profilePopup.querySelector('.profile-popup__save').addEventListener('click', ()=>{
     profileChange();
   })
-});
-
-popupClose.addEventListener('click', function(){
-  closePopup(popup);
 });
 
 popupCloseAdd.addEventListener('click', function(){
   closePopup(popupAdd);
 });
 
-//----------------Likes------------------------------
-const likeButtons = Array.from(document.querySelectorAll(".element__heart"));
-
-likeButtons.forEach((evt) => {
-  evt.addEventListener("click", () => {
-    evt.classList.toggle("element__heart_active");
-  });
-});
 
 //---------------------Add-Photo-----------------------
 addPhoto.addEventListener('click', (evt) => {
@@ -123,33 +112,30 @@ addPhoto.addEventListener('click', (evt) => {
     console.log(namePhotoInput);
     addObjPhoto.name = namePhotoInput.value;
     addObjPhoto.link = linkInput.value;
-    initialCards.unshift(addObjPhoto);
-    renderPhoto(addObjPhoto);
-    delete addObjPhoto.name;
-    delete addObjPhoto.link;
-    console.log(addObjPhoto);
+    photoElements.prepend(createCard(addObjPhoto));
   })
-
 })
-//------------------Delete-Photo--------------------------
-const elementDelete = Array.from(document.querySelectorAll(".element__delete"));
-const element = document.querySelectorAll('.element');
-elementDelete.forEach((evt, index) => {
-  evt.addEventListener("click", () => {
-    initialCards.splice(index, 1);
-    element[index].parentNode.removeChild(element[index]);
-  });
-});
 
-//----------------------Zoom-------------------------------
-const elementImage = Array.from(document.querySelectorAll(".element__image"));
-elementImage.forEach((evt, index) => {
-  evt.addEventListener("click", () => {
-    openPopup(popupPhoto);
-    popupPhoto.querySelector('.photo-popup__photo').src = evt.attributes.src.nodeValue;
-    popupPhoto.querySelector('.photo-popup__text').textContent = evt.alt;
-    document.querySelector('.photo-popup__close').addEventListener('click', ()=>{
-      closePopup(popupPhoto);
-    })
+
+function createCard(item) {
+  const userPhoto = cardTemplate.querySelector('.element').cloneNode(true);
+  userPhoto.querySelector('.element__image').src = item.link;
+  userPhoto.querySelector('.element__text').textContent = item.name;
+
+  userPhoto.querySelector('.element__heart').addEventListener("click", () => {
+    evt.classList.toggle("element__heart_active");
   });
-});
+
+  userPhoto.querySelector('.element__image').addEventListener("click", () => {
+    openPopup(popupPhoto);
+      popupPhoto.querySelector('.photo-popup__photo').src = item.link;
+      popupPhoto.querySelector('.photo-popup__text').textContent = item.name;
+  });
+
+  userPhoto.querySelector('.element__delete').addEventListener("click", () => {
+    const element = userPhoto.querySelector('.element__delete').closest('.element');
+    element.remove();
+  });
+  return userPhoto;
+}
+
