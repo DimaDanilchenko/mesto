@@ -7,7 +7,6 @@ const profileForm = document.querySelector('.profile-popup__form'),
       popupAdd = document.querySelector('.add-photo-popup'),
       profileRedaction = document.querySelector('.profile__redaction'),
       popupCloseAdd = document.querySelector('.add-photo-popup__close'),
-      elementDelete = document.querySelectorAll('element__delete'),
 // Находим поля формы в DOM
       nameInput = document.querySelector('.profile-popup__input_type_name'),
       jobInput = document.querySelector('.profile-popup__input_type_job'),
@@ -15,6 +14,10 @@ const profileForm = document.querySelector('.profile-popup__form'),
       linkInput = document.querySelector('.add-photo-popup__input_type_link'),
       photoElements = document.querySelector('.elements'),
       addPhoto = document.querySelector('.profile__add');
+      cardTemplate = document.querySelector('#element-template').content,
+      popupPhoto = document.querySelector('.photo-popup'),
+      photoForPopup = popupPhoto.querySelector('.photo-popup__photo'),
+      textForPopup = popupPhoto.querySelector('.photo-popup__text');
 
 const initialCards = [
   {
@@ -43,8 +46,7 @@ const initialCards = [
   }
 ];
 
-const cardTemplate = document.querySelector('#element-template').content,
-popupPhoto = document.querySelector('.photo-popup');
+
 // Просмотр массива
 initialCards.forEach((item) => {
   photoElements.append(createCard(item));
@@ -71,7 +73,7 @@ function handleFormSubmit (evt, popupElement) {
   evt.preventDefault();
   closePopup(popupElement);
 };
-function profileChange(){
+function changeProfile(){
   profileTitle.innerText =  nameInput.value;
   profileSubtitle.innerText = jobInput.value;
 };
@@ -80,56 +82,51 @@ function profileChange(){
 // он будет следить за событием “submit” - «отправка»
 profileForm.addEventListener('submit', (evt)=>{
   handleFormSubmit(evt, profilePopup);
+  changeProfile();
 });
 formAddPhoto.addEventListener('submit', (evt)=>{
   handleFormSubmit(evt, popupAdd);
+  const addObjPhoto = {};
+  console.log(namePhotoInput);
+  addObjPhoto.name = namePhotoInput.value;
+  addObjPhoto.link = linkInput.value;
+  photoElements.prepend(createCard(addObjPhoto));
+  evt.target.reset();
 });
 
 profileRedaction.addEventListener('click', ()=>{
   openPopup(profilePopup);
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
-  profilePopup.querySelector('.profile-popup__save').addEventListener('click', ()=>{
-    profileChange();
-  })
 });
-
-popupCloseAdd.addEventListener('click', function(){
-  closePopup(popupAdd);
-});
-
 
 //---------------------Add-Photo-----------------------
 addPhoto.addEventListener('click', (evt) => {
   openPopup(popupAdd);
-  const addObjPhoto = {};
-  popupAdd.querySelector('.add-photo-popup__save').addEventListener('click', ()=>{
-    console.log(namePhotoInput);
-    addObjPhoto.name = namePhotoInput.value;
-    addObjPhoto.link = linkInput.value;
-    photoElements.prepend(createCard(addObjPhoto));
-  })
 })
 
 
 function createCard(item) {
-  const userPhoto = cardTemplate.querySelector('.element').cloneNode(true);
-  userPhoto.querySelector('.element__image').src = item.link;
+  const userPhoto = cardTemplate.querySelector('.element').cloneNode(true),
+  elementImage = userPhoto.querySelector('.element__image');
+
+  elementImage.src = item.link;
   userPhoto.querySelector('.element__text').textContent = item.name;
+  elementImage.alt = item.name;
 
   userPhoto.querySelector('.element__heart').addEventListener("click", () => {
     userPhoto.querySelector('.element__heart').classList.toggle("element__heart_active");
   });
 
-  userPhoto.querySelector('.element__image').addEventListener("click", () => {
+  elementImage.addEventListener("click", () => {
     openPopup(popupPhoto);
-      popupPhoto.querySelector('.photo-popup__photo').src = item.link;
-      popupPhoto.querySelector('.photo-popup__text').textContent = item.name;
+      photoForPopup.src = item.link;
+      textForPopup.textContent = item.name;
+      photoForPopup.alt = item.name;
   });
 
   userPhoto.querySelector('.element__delete').addEventListener("click", () => {
-    const element = userPhoto.querySelector('.element__delete').closest('.element');
-    element.remove();
+    userPhoto.remove();
   });
   return userPhoto;
 }
