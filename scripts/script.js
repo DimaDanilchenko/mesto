@@ -18,6 +18,7 @@ const profileForm = document.querySelector('.profile-popup__form'),
   popupPhoto = document.querySelector('.photo-popup'),
   photoForPopup = popupPhoto.querySelector('.photo-popup__photo'),
   textForPopup = popupPhoto.querySelector('.photo-popup__text');
+const allForm = Array.from(document.querySelectorAll('.popup'));
 
 const initialCards = [
   {
@@ -130,4 +131,24 @@ function createCard(item) {
   });
   return userPhoto;
 }
+
+// Close popup all------------------
+allForm.forEach((elem) => {
+  elem.addEventListener('click', function (e) {
+    if (e.target === elem || escape == true) {
+      closePopup(elem);
+      console.log("Good");
+      console.log(elem);
+      console.log(e.keyCode);
+    }
+  })
+});
+
+document.addEventListener('keydown', (elem) => {
+  if (elem.keyCode === 27) {
+    allForm.forEach((e) => {
+      closePopup(e);
+    })
+  }
+});
 

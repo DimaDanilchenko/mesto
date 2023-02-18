@@ -46,10 +46,12 @@
             <img class="popup__close profile-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
           </button>
           <h3 class="profile-popup__title">Редактировать профиль</h3>
-          <form name="popupForm" method="post" class="profile-popup__form">
-            <input type="text" class="profile-popup__input profile-popup__input_type_name" name="popupName" placeholder="Имя">
-            <input type="text" class="profile-popup__input profile-popup__input_type_job" name="popupJob" placeholder="О себе">
-            <button class="profile-popup__save" type="submit">Сохранить</button>
+          <form name="popupForm" method="post" class="popup__form profile-popup__form" novalidate>
+            <input id="name-input" type="text" class="popup__input profile-popup__input profile-popup__input_type_name" name="popupName" placeholder="Имя" minlength="2" maxlength="40" required>
+            <span class="name-input-error"></span>
+            <input id="job-input" type="text" class="popup__input profile-popup__input profile-popup__input_type_job" name="popupJob" placeholder="О себе" minlength="2" maxlength="200" required>
+            <span class="job-input-error"></span>
+            <button class="popup__button profile-popup__save" type="submit">Сохранить</button>
           </form>
       </div>
     </div>
@@ -60,10 +62,12 @@
             <img class="popup__close add-photo-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
           </button>
           <h3 class="add-photo-popup__title">Новое место</h3>
-          <form name="popupFormAddImage" method="post" class="add-photo-popup__form">
-            <input type="text" class="add-photo-popup__input add-photo-popup__input_type_photo" name="popupNamePhoto" placeholder="Название">
-            <input type="text" class="add-photo-popup__input add-photo-popup__input_type_link" name="popupLink" placeholder="Ссылка на скачивание">
-            <button class="add-photo-popup__save" type="submit">Сохранить</button>
+          <form name="popupFormAddImage" method="post" class="popup__form add-photo-popup__form" novalidate>
+            <input id="name-foto-input" type="text" class="popup__input add-photo-popup__input add-photo-popup__input_type_photo" name="popupNamePhoto" placeholder="Название" minlength="2" maxlength="40" required>
+            <span class="name-foto-input-error"></span>
+            <input id="link-photo-input" type="url" class="popup__input add-photo-popup__input add-photo-popup__input_type_link" name="popupLink" placeholder="Ссылка на скачивание" required>
+            <span class="link-photo-input-error"></span>
+            <button class="popup__button add-photo-popup__save" type="submit">Сохранить</button>
           </form>
       </div>
     </div>
@@ -90,5 +94,6 @@
     </div>
   </template>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>
