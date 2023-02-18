@@ -1,3 +1,4 @@
+
 // Находим форму в DOM
 const profileForm = document.querySelector('.profile-popup__form'),
   formAddPhoto = document.querySelector('.add-photo-popup__form'),
@@ -55,6 +56,7 @@ initialCards.forEach((item) => {
 
 function openPopup(element) {
   element.classList.add('popup_open');
+  document.addEventListener('keydown', closeByEscape);
 };
 // находим все крестики проекта по универсальному селектору
 const closeButtons = document.querySelectorAll('.popup__close');
@@ -68,6 +70,7 @@ closeButtons.forEach((button) => {
 
 function closePopup(element) {
   element.classList.remove('popup_open');
+  document.removeEventListener('keydown', closeByEscape);
 };
 
 function handleFormSubmit(evt, popupElement) {
@@ -92,6 +95,8 @@ formAddPhoto.addEventListener('submit', (evt) => {
   addObjPhoto.name = namePhotoInput.value;
   addObjPhoto.link = linkInput.value;
   photoElements.prepend(createCard(addObjPhoto));
+  formAddPhoto.querySelector('.add-photo-popup__save ').disabled = 'true';
+  formAddPhoto.querySelector('.add-photo-popup__save ').classList.add('popup__button_disabled');
   evt.target.reset();
 });
 
@@ -135,7 +140,7 @@ function createCard(item) {
 // Close popup all------------------
 allForm.forEach((elem) => {
   elem.addEventListener('click', function (e) {
-    if (e.target === elem || escape == true) {
+    if (e.target === elem) {
       closePopup(elem);
       console.log("Good");
       console.log(elem);
@@ -144,11 +149,11 @@ allForm.forEach((elem) => {
   })
 });
 
-document.addEventListener('keydown', (elem) => {
-  if (elem.keyCode === 27) {
-    allForm.forEach((e) => {
-      closePopup(e);
-    })
+
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_open');
+    closePopup(openedPopup);
   }
-});
+}
 
