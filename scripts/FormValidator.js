@@ -8,7 +8,7 @@ const objData = {
 };
 
 
-class Validator {
+class FormValidator {
   constructor(data, element) {
     this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector;
@@ -17,7 +17,7 @@ class Validator {
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
   }
-  showInputError(formElement, inputElement, errorMessage, inputErrorClass, errorClass){
+  _showInputError(formElement, inputElement, errorMessage, inputErrorClass, errorClass){
     // Находим элемент ошибки внутри самой функции
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     // Остальной код такой же
@@ -26,7 +26,7 @@ class Validator {
     errorElement.classList.add(errorClass);
   };
 
-  hideInputError(formElement, inputElement, inputErrorClass, errorClass){
+  _hideInputError(formElement, inputElement, inputErrorClass, errorClass){
     // Находим элемент ошибки
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     // Остальной код такой же
@@ -37,7 +37,7 @@ class Validator {
 
   // Функция принимает массив полей
 
-  hasInvalidInput(inputList){
+  _hasInvalidInput(inputList){
     // проходим по этому массиву методом some
     return inputList.some((inputElement) => {
       // Если поле не валидно, колбэк вернёт true
@@ -47,20 +47,20 @@ class Validator {
       return !inputElement.validity.valid;
     })
   };
-  isValid(formElement, inputElement, inputErrorClass, errorClass){
+  _isValid(formElement, inputElement, inputErrorClass, errorClass){
     if (!inputElement.validity.valid) {
       // showInputError теперь получает параметром форму, в которой
       // находится проверяемое поле, и само это поле
-      showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
+      this._showInputError(formElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
     } else {
       // hideInputError теперь получает параметром форму, в которой
       // находится проверяемое поле, и само это поле
-      hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+      this._hideInputError(formElement, inputElement, inputErrorClass, errorClass);
     }
   };
-    toggleButtonState(inputList, buttonElement, inactiveButtonClass){
+    _toggleButtonState(inputList, buttonElement, inactiveButtonClass){
     // Если есть хотя бы один невалидный инпут
-    if (hasInvalidInput(inputList)) {
+    if (this._hasInvalidInput(inputList)) {
       // сделай кнопку неактивной
       buttonElement.classList.add(inactiveButtonClass);
       buttonElement.disabled = true;
@@ -70,7 +70,7 @@ class Validator {
       buttonElement.disabled = false;
     }
   };
-  setEventListeners(formElement, {
+  _setEventListeners(formElement, {
     inputSelector,
     submitButtonSelector,
     inactiveButtonClass,
@@ -82,16 +82,16 @@ class Validator {
     const inputList = Array.from(formElement.querySelectorAll(inputSelector));
     // Найдём в текущей форме кнопку отправки
     const buttonElement = formElement.querySelector(submitButtonSelector);
-    toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+    this._toggleButtonState(inputList, buttonElement, inactiveButtonClass);
     // Обойдём все элементы полученной коллекции
     inputList.forEach((inputElement) => {
       // каждому полю добавим обработчик события input
       inputElement.addEventListener('input', () => {
         // Внутри колбэка вызовем isValid,
         // передав ей форму и проверяемый элемент
-        isValid(formElement, inputElement, inputErrorClass, errorClass);
+        this._isValid(formElement, inputElement, inputErrorClass, errorClass);
 
-        toggleButtonState(inputList, buttonElement, inactiveButtonClass);
+        this._toggleButtonState(inputList, buttonElement, inactiveButtonClass);
       });
     });
   };
@@ -103,10 +103,11 @@ class Validator {
     formList.forEach((formElement) => {
       // Для каждой формы вызовем функцию setEventListeners,
       // передав ей элемент формы
-      setEventListeners(formElement, rest);
+      this._setEventListeners(formElement, rest);
     });
   };
 
 };
 
-export { objData, Validator};
+const validate = new FormValidator(objData).enableValidation;
+export { objData, FormValidator, validate};

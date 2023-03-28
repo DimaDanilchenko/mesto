@@ -1,5 +1,5 @@
 import {Card, initialCards, createCard} from './Card.js';
-import {objData, Validator} from './FormValidator.js';
+import {objData, FormValidator, validate} from './FormValidator.js';
 // Находим форму в DOM
 const profileForm = document.querySelector('.profile-popup__form'),
   formAddPhoto = document.querySelector('.add-photo-popup__form'),
@@ -66,6 +66,7 @@ formAddPhoto.addEventListener('submit', (evt) => {
   formAddPhoto.querySelector('.add-photo-popup__save ').disabled = 'true';
   formAddPhoto.querySelector('.add-photo-popup__save ').classList.add('popup__button_disabled');
   evt.target.reset();
+  console.log("Good");
 });
 
 profileRedaction.addEventListener('click', () => {
