@@ -58,36 +58,36 @@ class FormValidator {
       this._hideInputError(formElement, inputElement);
     }
   };
-  _toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
+  _toggleButtonState(inputList, buttonElement) {
     // Если есть хотя бы один невалидный инпут
     if (this._hasInvalidInput(inputList)) {
       // сделай кнопку неактивной
-      buttonElement.classList.add(inactiveButtonClass);
+      buttonElement.classList.add(this.inactiveButtonClass);
       buttonElement.disabled = true;
     } else {
       // иначе сделай кнопку активной
-      buttonElement.classList.remove(inactiveButtonClass);
+      buttonElement.classList.remove(this.inactiveButtonClass);
       buttonElement.disabled = false;
     }
   };
   _setEventListeners(formElement) {
-  // Находим все поля внутри формы,
-  // сделаем из них массив методом Array.from
-  const inputList = Array.from(formElement.querySelectorAll(this.inputSelector));
-  // Найдём в текущей форме кнопку отправки
-  const buttonElement = formElement.querySelector(this.submitButtonSelector);
-  this._toggleButtonState(inputList, buttonElement, this.inactiveButtonClass);
-  // Обойдём все элементы полученной коллекции
-  inputList.forEach((inputElement) => {
-    // каждому полю добавим обработчик события input
-    inputElement.addEventListener('input', () => {
-      // Внутри колбэка вызовем isValid,
-      // передав ей форму и проверяемый элемент
-      this._isValid(formElement, inputElement);
+    // Находим все поля внутри формы,
+    // сделаем из них массив методом Array.from
+    const inputList = Array.from(formElement.querySelectorAll(this.inputSelector));
+    // Найдём в текущей форме кнопку отправки
+    const buttonElement = formElement.querySelector(this.submitButtonSelector);
+    this._toggleButtonState(inputList, buttonElement, this.inactiveButtonClass);
+    // Обойдём все элементы полученной коллекции
+    inputList.forEach((inputElement) => {
+      // каждому полю добавим обработчик события input
+      inputElement.addEventListener('input', () => {
+        // Внутри колбэка вызовем isValid,
+        // передав ей форму и проверяемый элемент
+        this._isValid(formElement, inputElement);
 
-      this._toggleButtonState(inputList, buttonElement, this.inactiveButtonClass);
+        this._toggleButtonState(inputList, buttonElement, this.inactiveButtonClass);
+      });
     });
-  });
   };
   enableValidation() {
     const formList = Array.from(document.querySelectorAll(this.formSelector));
