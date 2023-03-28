@@ -71,7 +71,7 @@ class Card {
 function createCard(item){
   const card = new Card(item, '.element-template_type_default');
   const cardElement = card.generate();
-  photoElements.append(cardElement);
+  photoElements.prepend(cardElement);
 }
 // Просмотр массива
 initialCards.forEach((item) => {

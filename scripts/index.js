@@ -1,5 +1,5 @@
 import {Card, initialCards, createCard} from './Card.js';
-import {objData, FormValidator, validate} from './FormValidator.js';
+import {objData, FormValidator} from './FormValidator.js';
 // Находим форму в DOM
 const profileForm = document.querySelector('.profile-popup__form'),
   formAddPhoto = document.querySelector('.add-photo-popup__form'),
@@ -19,6 +19,7 @@ const profileForm = document.querySelector('.profile-popup__form'),
   photoForPopup = popupPhoto.querySelector('.photo-popup__photo'),
   textForPopup = popupPhoto.querySelector('.photo-popup__text');
 const allForm = Array.from(document.querySelectorAll('.popup'));
+
 
 
 
