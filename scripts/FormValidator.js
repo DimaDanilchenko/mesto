@@ -75,7 +75,7 @@ class FormValidator {
     const inputList = Array.from(formElement.querySelectorAll(this.inputSelector));
     // Найдём в текущей форме кнопку отправки
     const buttonElement = formElement.querySelector(this.submitButtonSelector);
-    this._toggleButtonState(inputList, buttonElement, this.inactiveButtonClass);
+    this._toggleButtonState(inputList, buttonElement);
     // Обойдём все элементы полученной коллекции
     inputList.forEach((inputElement) => {
       // каждому полю добавим обработчик события input
@@ -84,7 +84,7 @@ class FormValidator {
         // передав ей форму и проверяемый элемент
         this._isValid(formElement, inputElement);
 
-        this._toggleButtonState(inputList, buttonElement, this.inactiveButtonClass);
+        this._toggleButtonState(inputList, buttonElement);
       });
     });
   };
