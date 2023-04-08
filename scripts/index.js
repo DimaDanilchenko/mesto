@@ -1,4 +1,4 @@
-import {Card, initialCards, createCard} from './Card.js';
+import {Card} from './Card.js';
 import {objData, FormValidator} from './FormValidator.js';
 // Находим форму в DOM
 const profileForm = document.querySelector('.profile-popup__form'),
@@ -19,8 +19,39 @@ const profileForm = document.querySelector('.profile-popup__form'),
   photoForPopup = popupPhoto.querySelector('.photo-popup__photo'),
   textForPopup = popupPhoto.querySelector('.photo-popup__text');
 const allForm = Array.from(document.querySelectorAll('.popup'));
+const photoElements = document.querySelector('.elements');
 
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
+// Просмотр массива
+initialCards.forEach((item) => {
+  createCard(item);
+});
 
 
 function openPopup(element) {
@@ -100,4 +131,10 @@ function closeByEscape(evt) {
     closePopup(openedPopup);
   }
 }
+function createCard(item){
+  const card = new Card(item, '.element-template_type_default');
+  const cardElement = card.generate();
+  photoElements.prepend(cardElement);
+}
 
+export {openPopup, photoForPopup, textForPopup, popupPhoto, createCard};

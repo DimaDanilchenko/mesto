@@ -1,30 +1,6 @@
-const photoElements = document.querySelector('.elements');
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import { openPopup, photoForPopup, textForPopup, popupPhoto, createCard} from "./index.js";
+
+
 
 
 class Card {
@@ -39,7 +15,10 @@ class Card {
 	};
   generate() {
     this._element = this._getElement();
+    //this._element.querySelector('.element__image') = this._cardImage;
+    //this._element.querySelector('.element__heart') = this._likeButton;
   	this._element.querySelector('.element__image').src = this._link;
+    this._element.querySelector('.element__image').alt = this._name;
   	this._element.querySelector('.element__text').textContent = this._name;
 
     this._setEventListeners();
@@ -54,9 +33,9 @@ class Card {
 
     this._element.querySelector('.element__image').addEventListener('click', () => {
       openPopup(popupPhoto);
-      photoForPopup.src = this.link;
-      textForPopup.textContent = this.name;
-      photoForPopup.alt = this.name;
+      photoForPopup.src = this._link;
+      textForPopup.textContent = this._name;
+      photoForPopup.alt = this._name;
     });
 
     this._element.querySelector('.element__delete').addEventListener("click", () => {
@@ -68,13 +47,6 @@ class Card {
     this._element.querySelector('.element__heart').classList.toggle("element__heart_active");
   };
 };
-function createCard(item){
-  const card = new Card(item, '.element-template_type_default');
-  const cardElement = card.generate();
-  photoElements.prepend(cardElement);
-}
-// Просмотр массива
-initialCards.forEach((item) => {
-  createCard(item);
-});
-export { Card, initialCards, createCard};
+
+
+export {Card};
