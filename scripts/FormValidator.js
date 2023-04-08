@@ -1,3 +1,4 @@
+
 const objData = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -6,8 +7,6 @@ const objData = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
-
-
 class FormValidator {
   constructor(data) {
     this.formSelector = data.formSelector;
@@ -103,4 +102,4 @@ class FormValidator {
 const validate = new FormValidator(objData);
 const validateElement = validate.enableValidation();
 
-export { objData, FormValidator };
+export {FormValidator};

@@ -1,5 +1,5 @@
 import {Card} from './Card.js';
-import {objData, FormValidator} from './FormValidator.js';
+import {FormValidator} from './FormValidator.js';
 // Находим форму в DOM
 const profileForm = document.querySelector('.profile-popup__form'),
   formAddPhoto = document.querySelector('.add-photo-popup__form'),
@@ -18,7 +18,7 @@ const profileForm = document.querySelector('.profile-popup__form'),
   popupPhoto = document.querySelector('.photo-popup'),
   photoForPopup = popupPhoto.querySelector('.photo-popup__photo'),
   textForPopup = popupPhoto.querySelector('.photo-popup__text');
-const allForm = Array.from(document.querySelectorAll('.popup'));
+const allPopup = Array.from(document.querySelectorAll('.popup'));
 const photoElements = document.querySelector('.elements');
 
 const initialCards = [
@@ -78,8 +78,8 @@ function handleFormSubmit(evt, popupElement) {
   closePopup(popupElement);
 };
 function changeProfile() {
-  profileTitle.innerText = nameInput.value;
-  profileSubtitle.innerText = jobInput.value;
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
 };
 
 // Прикрепляем обработчик к форме:
@@ -95,8 +95,6 @@ formAddPhoto.addEventListener('submit', (evt) => {
   addObjPhoto.name = namePhotoInput.value;
   addObjPhoto.link = linkInput.value;
   createCard(addObjPhoto);
-  formAddPhoto.querySelector('.add-photo-popup__save ').disabled = 'true';
-  formAddPhoto.querySelector('.add-photo-popup__save ').classList.add('popup__button_disabled');
   evt.target.reset();
   console.log("Good");
 });
@@ -113,7 +111,7 @@ addPhoto.addEventListener('click', (evt) => {
 })
 
 // Close popup all------------------
-allForm.forEach((elem) => {
+allPopup.forEach((elem) => {
   elem.addEventListener('click', function (e) {
     if (e.target === elem) {
       closePopup(elem);
