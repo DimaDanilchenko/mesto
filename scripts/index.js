@@ -48,6 +48,15 @@ const initialCards = [
   }
 ];
 
+const objData = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
 // Просмотр массива
 initialCards.forEach((item) => {
   createCard(item);
@@ -134,5 +143,10 @@ function createCard(item){
   const cardElement = card.generate();
   photoElements.prepend(cardElement);
 }
+
+const validate = new FormValidator(objData, profileForm);
+const validateElement = validate.enableValidation();
+const validatePhoto = new FormValidator(objData, formAddPhoto);
+const validateElementPhoto = validatePhoto.enableValidation()
 
 export {openPopup, photoForPopup, textForPopup, popupPhoto, createCard};

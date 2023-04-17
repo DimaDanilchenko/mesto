@@ -1,20 +1,14 @@
 
-const objData = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
+
 class FormValidator {
-  constructor(data) {
+  constructor(data, form) {
     this.formSelector = data.formSelector;
     this.inputSelector = data.inputSelector;
     this.submitButtonSelector = data.submitButtonSelector;
     this.inactiveButtonClass = data.inactiveButtonClass;
     this.inputErrorClass = data.inputErrorClass;
     this.errorClass = data.errorClass;
+    this.form = form;
   }
   _showInputError(formElement, inputElement, errorMessage) {
     // Находим элемент ошибки внутри самой функции
@@ -89,17 +83,12 @@ class FormValidator {
     });
   };
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this.formSelector));
-    // Переберём полученную коллекцию
-    formList.forEach((formElement) => {
       // Для каждой формы вызовем функцию setEventListeners,
       // передав ей элемент формы
-      this._setEventListeners(formElement);
-    });
+      this._setEventListeners(this.form);
   };
 
 };
-const validate = new FormValidator(objData);
-const validateElement = validate.enableValidation();
+
 
 export {FormValidator};
