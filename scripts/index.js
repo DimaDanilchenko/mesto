@@ -1,5 +1,5 @@
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 // Находим форму в DOM
 const profileForm = document.querySelector('.profile-popup__form'),
   formAddPhoto = document.querySelector('.add-photo-popup__form'),
@@ -138,7 +138,7 @@ function closeByEscape(evt) {
     closePopup(openedPopup);
   }
 }
-function createCard(item){
+function createCard(item) {
   const card = new Card(item, '.element-template_type_default');
   const cardElement = card.generate();
   photoElements.prepend(cardElement);
@@ -147,6 +147,6 @@ function createCard(item){
 const validate = new FormValidator(objData, profileForm);
 const validateElement = validate.enableValidation();
 const validatePhoto = new FormValidator(objData, formAddPhoto);
-const validateElementPhoto = validatePhoto.enableValidation()
+const validateElementPhoto = validatePhoto.enableValidation();
 
-export {openPopup, photoForPopup, textForPopup, popupPhoto, createCard};
+export { openPopup, photoForPopup, textForPopup, popupPhoto, createCard };

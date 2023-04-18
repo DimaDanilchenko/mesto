@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="./pages/index.css">
   <title>Mesto</title>
 </head>
+
 <body class="body">
   <div class="page">
     <header class="header">
@@ -42,33 +44,39 @@
 
     <div class="popup profile-popup">
       <div class="profile-popup__container">
-          <button class="profile-popup__close" aria-label="popup-close">
-            <img class="popup__close profile-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
-          </button>
-          <h3 class="profile-popup__title">Редактировать профиль</h3>
-          <form name="popupForm" method="post" class="popup__form profile-popup__form" novalidate>
-            <input id="name-input" type="text" class="popup__input profile-popup__input profile-popup__input_type_name" name="popupName" placeholder="Имя" minlength="2" maxlength="40" required>
-            <span class="name-input-error"></span>
-            <input id="job-input" type="text" class="popup__input profile-popup__input profile-popup__input_type_job" name="popupJob" placeholder="О себе" minlength="2" maxlength="200" required>
-            <span class="job-input-error"></span>
-            <button class="popup__button profile-popup__save" type="submit">Сохранить</button>
-          </form>
+        <button class="profile-popup__close" aria-label="popup-close">
+          <img class="popup__close profile-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
+        </button>
+        <h3 class="profile-popup__title">Редактировать профиль</h3>
+        <form name="popupForm" method="post" class="popup__form profile-popup__form" novalidate>
+          <input id="name-input" type="text" class="popup__input profile-popup__input profile-popup__input_type_name"
+            name="popupName" placeholder="Имя" minlength="2" maxlength="40" required>
+          <span class="name-input-error"></span>
+          <input id="job-input" type="text" class="popup__input profile-popup__input profile-popup__input_type_job"
+            name="popupJob" placeholder="О себе" minlength="2" maxlength="200" required>
+          <span class="job-input-error"></span>
+          <button class="popup__button profile-popup__save" type="submit">Сохранить</button>
+        </form>
       </div>
     </div>
 
     <div class="popup add-photo-popup">
       <div class="add-photo-popup__container">
-          <button class="add-photo-popup__close" aria-label="add-photo-popup-close">
-            <img class="popup__close add-photo-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
-          </button>
-          <h3 class="add-photo-popup__title">Новое место</h3>
-          <form name="popupFormAddImage" method="post" class="popup__form add-photo-popup__form" novalidate>
-            <input id="name-foto-input" type="text" class="popup__input add-photo-popup__input add-photo-popup__input_type_photo" name="popupNamePhoto" placeholder="Название" minlength="2" maxlength="40" required>
-            <span class="name-foto-input-error"></span>
-            <input id="link-photo-input" type="url" class="popup__input add-photo-popup__input add-photo-popup__input_type_link" name="popupLink" placeholder="Ссылка на скачивание" required>
-            <span class="link-photo-input-error"></span>
-            <button class="popup__button add-photo-popup__save" type="submit">Сохранить</button>
-          </form>
+        <button class="add-photo-popup__close" aria-label="add-photo-popup-close">
+          <img class="popup__close add-photo-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
+        </button>
+        <h3 class="add-photo-popup__title">Новое место</h3>
+        <form name="popupFormAddImage" method="post" class="popup__form add-photo-popup__form" novalidate>
+          <input id="name-foto-input" type="text"
+            class="popup__input add-photo-popup__input add-photo-popup__input_type_photo" name="popupNamePhoto"
+            placeholder="Название" minlength="2" maxlength="40" required>
+          <span class="name-foto-input-error"></span>
+          <input id="link-photo-input" type="url"
+            class="popup__input add-photo-popup__input add-photo-popup__input_type_link" name="popupLink"
+            placeholder="Ссылка на скачивание" required>
+          <span class="link-photo-input-error"></span>
+          <button class="popup__button add-photo-popup__save" type="submit">Сохранить</button>
+        </form>
       </div>
     </div>
 
@@ -77,7 +85,7 @@
         <button class="photo-popup__close" aria-label="photo-popup-close">
           <img class="popup__close photo-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
         </button>
-        <img alt="photo" class="photo-popup__photo" >
+        <img alt="photo" class="photo-popup__photo">
         <h2 class="photo-popup__text"></h2>
       </div>
     </div>
@@ -95,4 +103,5 @@
   </template>
   <script type="module" src="./scripts/index.js"></script>
 </body>
+
 </html>
