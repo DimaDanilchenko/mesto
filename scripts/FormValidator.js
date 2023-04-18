@@ -68,9 +68,7 @@ class FormValidator {
   _setEventListeners() {
     // Находим все поля внутри формы,
     // сделаем из них массив методом Array.from
-  //  const inputList = Array.from(formElement.querySelectorAll(this.inputSelector));
     // Найдём в текущей форме кнопку отправки
-  //  const buttonElement = formElement.querySelector(this.submitButtonSelector);
     this._toggleButtonState();
     // Обойдём все элементы полученной коллекции
     this.inputList.forEach((inputElement) => {

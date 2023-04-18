@@ -57,11 +57,15 @@ const objData = {
   errorClass: 'popup__error_visible'
 };
 
+const formProfileValidate = new FormValidator(objData, profileForm);
+formProfileValidate.enableValidation();
+const formPhotoValidate = new FormValidator(objData, formAddPhoto);
+formPhotoValidate.enableValidation();
+
 // Просмотр массива
 initialCards.forEach((item) => {
   createCard(item);
 });
-
 
 function openPopup(element) {
   element.classList.add('popup_open');
@@ -89,6 +93,7 @@ function handleFormSubmit(evt, popupElement) {
 function changeProfile() {
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
+  formProfileValidate._toggleButtonState();
 };
 
 // Прикрепляем обработчик к форме:
@@ -117,6 +122,7 @@ profileRedaction.addEventListener('click', () => {
 //---------------------Add-Photo-----------------------
 addPhoto.addEventListener('click', (evt) => {
   openPopup(popupAdd);
+  formPhotoValidate._toggleButtonState();
 })
 
 // Close popup all------------------
@@ -144,9 +150,6 @@ function createCard(item) {
   photoElements.prepend(cardElement);
 }
 
-const validate = new FormValidator(objData, profileForm);
-const validateElement = validate.enableValidation();
-const validatePhoto = new FormValidator(objData, formAddPhoto);
-const validateElementPhoto = validatePhoto.enableValidation();
 
-export { openPopup, photoForPopup, textForPopup, popupPhoto, createCard };
+
+export { openPopup, photoForPopup, textForPopup, popupPhoto };
