@@ -64,7 +64,7 @@ formPhotoValidate.enableValidation();
 
 // Просмотр массива
 initialCards.forEach((item) => {
-  createCard(item);
+  photoElements.prepend(createCard(item));
 });
 
 function openPopup(element) {
@@ -93,7 +93,7 @@ function handleFormSubmit(evt, popupElement) {
 function changeProfile() {
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-  formProfileValidate._toggleButtonState();
+  formProfileValidate.resetValidation();
 };
 
 // Прикрепляем обработчик к форме:
@@ -108,7 +108,7 @@ formAddPhoto.addEventListener('submit', (evt) => {
   console.log(namePhotoInput);
   addObjPhoto.name = namePhotoInput.value;
   addObjPhoto.link = linkInput.value;
-  createCard(addObjPhoto);
+  photoElements.prepend(createCard(addObjPhoto));
   evt.target.reset();
   console.log("Good");
 });
@@ -122,7 +122,7 @@ profileRedaction.addEventListener('click', () => {
 //---------------------Add-Photo-----------------------
 addPhoto.addEventListener('click', (evt) => {
   openPopup(popupAdd);
-  formPhotoValidate._toggleButtonState();
+  formPhotoValidate.resetValidation();
 })
 
 // Close popup all------------------
@@ -147,7 +147,7 @@ function closeByEscape(evt) {
 function createCard(item) {
   const card = new Card(item, '.element-template_type_default');
   const cardElement = card.generate();
-  photoElements.prepend(cardElement);
+  return cardElement;
 }
 
 

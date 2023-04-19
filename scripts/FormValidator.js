@@ -87,6 +87,14 @@ class FormValidator {
     // передав ей элемент формы
     this._setEventListeners();
   };
+  resetValidation() {
+    this._toggleButtonState();
+
+    this.inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
+
+  }
 
 };
 
