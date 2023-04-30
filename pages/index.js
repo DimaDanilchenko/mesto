@@ -1,5 +1,5 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
+import { Card } from '../scripts/components/Card.js';
+import { FormValidator } from '../scripts/components/FormValidator.js';
 // Находим форму в DOM
 const profileForm = document.querySelector('.profile-popup__form'),
   formAddPhoto = document.querySelector('.add-photo-popup__form'),
@@ -66,6 +66,7 @@ formPhotoValidate.enableValidation();
 initialCards.forEach((item) => {
   photoElements.prepend(createCard(item));
 });
+
 
 function openPopup(element) {
   element.classList.add('popup_open');
