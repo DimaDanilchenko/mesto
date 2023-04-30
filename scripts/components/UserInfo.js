@@ -9,8 +9,9 @@ export default class UserInfo {
       about: this.userInfo.textContent,
     }
   }
-  setUserInfo({name, about}){
-    this.userName.textContent = name;
-    this.userInfo.textContent = about;
+  setUserInfo(data){
+    console.log(data);
+    this.userName.textContent = data.popupName;
+    this.userInfo.textContent = data.popupJob;
   }
 }

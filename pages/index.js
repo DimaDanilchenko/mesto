@@ -9,7 +9,7 @@ import Popup from '../scripts/components/Popup.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 // Находим форму в DOM
 const profileForm = document.querySelector('.profile-popup__form');
-const formAddPhoto = document.querySelector('.add-photo-popup__form');
+const formAddPhoto = document.querySelector('.add-photo-popup');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const profilePopup = document.querySelector('.profile-popup');
@@ -42,8 +42,8 @@ const createCard = (data) => {
   const card = new Card({
     data: data,
     selector: '.element-template_type_default',
-    handleCardClick: (card) => {
-      popupImage.open(card)
+    handleCardClick: (data) => {
+      popupImage.open(data)
     }
   })
   return card.generate();
@@ -70,6 +70,8 @@ const popupProfile = new PopupWithForm({
   popupSelector: '.profile-popup',
   handleFormSubmit: (data) => {
     userInfo.setUserInfo(data);
+    console.log(data);
+    popupProfile.close();
   }
 });
 popupProfile.setEventListeners();
@@ -80,20 +82,24 @@ const popupPlace = new PopupWithForm({
   handleFormSubmit: (data) => {
     const newCard = createCard(data);
     cardList.addItem(newCard);
-    popupMesto.close();
-    cardList.addItem(createCard(data));
+    popupPlace.close();
   }
 });
 
 popupPlace.setEventListeners();
 
 
-
+// слушатель для попапа "Место"
+addPhoto.addEventListener("click", () => {
+  popupPlace.open();
+  formPhotoValidate.resetValidation();
+});
+/*
 formAddPhoto.addEventListener('submit', (evt) => {
   popupPlace.open();
   formPhotoValidate.resetValidation();
 });
-
+*/
 profileRedaction.addEventListener("click", () => {
   const getUser = userInfo.getUserInfo();
   nameInput.value = getUser.name;
