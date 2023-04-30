@@ -1,5 +1,3 @@
-
-
 class FormValidator {
   constructor(data, form) {
     this.formSelector = data.formSelector;

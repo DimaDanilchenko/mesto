@@ -1,10 +1,11 @@
-import { openPopup, photoForPopup, textForPopup, popupPhoto } from "../../pages/index.js";
+import { photoForPopup, textForPopup } from "../../pages/index.js";
 
 class Card {
-  constructor(data, selector) {
+  constructor({ data, selector, handleCardClick }) {
     this._name = data.name;
     this._link = data.link;
     this._selector = selector;
+    this.handleCardClick = handleCardClick;
   };
   _getElement() {
     const cardElement = document.querySelector(this._selector).content.querySelector('.element').cloneNode(true);
@@ -29,10 +30,10 @@ class Card {
     });
 
     this._cardImage.addEventListener('click', () => {
-      openPopup(popupPhoto);
-      photoForPopup.src = this._link;
-      textForPopup.textContent = this._name;
-      photoForPopup.alt = this._name;
+      this.handleCardClick({
+        name: this._name,
+        link: this._link,
+      });
     });
 
     this._element.querySelector('.element__delete').addEventListener("click", () => {
