@@ -1,5 +1,3 @@
-import { photoForPopup, textForPopup } from "../../pages/index.js";
-
 class Card {
   constructor({ data, selector, handleCardClick }) {
     this._name = data.name;

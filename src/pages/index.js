@@ -99,6 +99,3 @@ profileRedaction.addEventListener("click", () => {
   formProfileValidate.resetValidation();
 });
 
-
-export { photoForPopup, textForPopup, popupPhoto };
-
