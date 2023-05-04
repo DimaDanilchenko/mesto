@@ -33,4 +33,17 @@ const objData = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
-export {initialCards, objData};
+// Находим форму в DOM
+const profileForm = document.querySelector('.profile-popup__form');
+const formAddPhoto = document.querySelector('.add-photo-popup');
+const profileRedaction = document.querySelector('.profile__redaction');
+// Находим поля формы в DOM
+const nameInput = document.querySelector('.profile-popup__input_type_name');
+const jobInput = document.querySelector('.profile-popup__input_type_job');
+const addPhoto = document.querySelector('.profile__add');
+const popupPhoto = document.querySelector('.photo-popup');
+const photoForPopup = popupPhoto.querySelector('.photo-popup__photo');
+const textForPopup = popupPhoto.querySelector('.photo-popup__text');
+const photoElements = document.querySelector('.elements');
+export {initialCards, objData, profileForm, formAddPhoto, profileRedaction, nameInput, jobInput,
+        addPhoto, popupPhoto, photoForPopup, textForPopup, photoElements};

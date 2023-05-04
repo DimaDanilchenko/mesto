@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="./pages/index.css">
   <title>Mesto</title>
 </head>
 
@@ -18,19 +18,19 @@
       <section class="section-profile">
         <div class="profile">
           <div class="profile__info">
-            <img class="profile__avatar" src="./images/Avatar.png" alt="Аватарка">
+            <img src="<%=require('./images/Avatar.png')%>" alt="Аватарка">
             <div class="profile__account">
               <div class="profile__text">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
                 <button class="profile__redaction" type="button" aria-label="profile-redaction">
-                  <img src="./images/Redaction.svg" alt="Изменить профиль" class="profile__redaction-image">
+                  <img src="<%=require('./images/Redaction.svg')%>" alt="Изменить профиль" class="profile__redaction-image">
                 </button>
               </div>
               <p class="profile__subtitle">Исследователь океана</p>
             </div>
           </div>
           <button class="profile__add" type="button">
-            <img src="./images/Add.svg" alt="Добавить фото">
+            <img src="<%=require('./images/Add.svg')%>" alt="Добавить фото">
           </button>
         </div>
       </section>
@@ -45,7 +45,7 @@
     <div class="popup profile-popup">
       <div class="profile-popup__container">
         <button class="profile-popup__close" aria-label="popup-close">
-          <img class="popup__close profile-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
+          <img class="popup__close profile-popup__image" src="<%=require('./images/Close_Icon.svg')%>" alt="Закрыть окно">
         </button>
         <h3 class="profile-popup__title">Редактировать профиль</h3>
         <form name="popupForm" method="post" class="popup__form profile-popup__form" novalidate>
@@ -63,7 +63,7 @@
     <div class="popup add-photo-popup">
       <div class="add-photo-popup__container">
         <button class="add-photo-popup__close" aria-label="add-photo-popup-close">
-          <img class="popup__close add-photo-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
+          <img class="popup__close add-photo-popup__image" src="<%=require('./images/Close_Icon.svg')%>" alt="Закрыть окно">
         </button>
         <h3 class="add-photo-popup__title">Новое место</h3>
         <form name="popupFormAddImage" method="post" class="popup__form add-photo-popup__form" novalidate>
@@ -83,7 +83,7 @@
     <div class="popup photo-popup">
       <div class="photo-popup__container">
         <button class="photo-popup__close" aria-label="photo-popup-close">
-          <img class="popup__close photo-popup__image" src="./images/Close_Icon.svg" alt="Закрыть окно">
+          <img class="popup__close photo-popup__image" src="<%=require('./images/Close_Icon.svg')%>" alt="Закрыть окно">
         </button>
         <img alt="photo" class="photo-popup__photo">
         <h2 class="photo-popup__text"></h2>
@@ -101,7 +101,6 @@
       </div>
     </div>
   </template>
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>

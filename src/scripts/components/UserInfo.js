@@ -10,7 +10,6 @@ export default class UserInfo {
     }
   }
   setUserInfo(data){
-    console.log(data);
     this.userName.textContent = data.popupName;
     this.userInfo.textContent = data.popupJob;
   }
