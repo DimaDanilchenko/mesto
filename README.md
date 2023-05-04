@@ -19,4 +19,4 @@
 
 ### Ссылка на проект:
 
-* https://dimadanilchenko.github.io/mesto/src
+* https://dimadanilchenko.github.io/mesto/
