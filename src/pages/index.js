@@ -71,6 +71,7 @@ popupProfile.setEventListeners();
 const popupPlace = new PopupWithForm({
   popupSelector: '.add-photo-popup',
   handleFormSubmit: (data) => {
+    console.log(data);
     const newCard = createCard(data);
     cardList.addItem(newCard);
     popupPlace.close();
@@ -85,12 +86,7 @@ addPhoto.addEventListener("click", () => {
   popupPlace.open();
   formPhotoValidate.resetValidation();
 });
-/*
-formAddPhoto.addEventListener('submit', (evt) => {
-  popupPlace.open();
-  formPhotoValidate.resetValidation();
-});
-*/
+
 profileRedaction.addEventListener("click", () => {
   const getUser = userInfo.getUserInfo();
   nameInput.value = getUser.name;
