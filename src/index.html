@@ -18,7 +18,10 @@
       <section class="section-profile">
         <div class="profile">
           <div class="profile__info">
-            <img src="<%=require('./images/Avatar.png')%>" alt="Аватарка">
+            <div class="profile__avatar">
+              <img src="<%=require('./images/Avatar.png')%>" class="profile__image">
+              <img src="<%=require('./images/Vector.png')%>" class="profile__vector-image">
+            </div>
             <div class="profile__account">
               <div class="profile__text">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -87,6 +90,34 @@
         </button>
         <img alt="photo" class="photo-popup__photo">
         <h2 class="photo-popup__text"></h2>
+      </div>
+    </div>
+
+    <div class="popup profile-image-popup">
+      <div class="profile-image-popup__container">
+        <button class="photo-popup__close" aria-label="profile-image-popup-close">
+          <img class="popup__close photo-popup__image" src="<%=require('./images/Close_Icon.svg')%>" alt="Закрыть окно">
+        </button>
+        <h3 class="profile-image-popup__title">Обновить аватар</h3>
+        <form name="popupFormProfileImage" method="post" class="popup__form profile-image-popup__form" novalidate>
+          <input id="profile-image-popup" type="url"
+            class="popup__input profile-image-popup__input profile-image-popup__input_type_link" name="link"
+            placeholder="Ссылка на скачивание" required>
+          <span class="link-photo-input-error"></span>
+          <button class="popup__button profile-image-popup__save" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup delete-photo-popup">
+      <div class="delete-photo-popup__container">
+        <button class="photo-popup__close" aria-label="photo-popup-close">
+          <img class="popup__close photo-popup__image" src="<%=require('./images/Close_Icon.svg')%>" alt="Закрыть окно">
+        </button>
+        <h3 class="delete-photo-popup__title">Вы уверены?</h3>
+        <form name="popupFormDeletePhoto" method="post" class="popup__form delete-photo-popup__form" novalidate>
+          <button class="popup__button delete-photo-popup__save" type="submit">Да</button>
+        </form>
       </div>
     </div>
 

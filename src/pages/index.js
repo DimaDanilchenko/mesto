@@ -12,19 +12,33 @@ import {
   popupPhoto,
   photoForPopup,
   textForPopup,
-  photoElements} from '../scripts/utils/constants.js';
+  photoElements,
+  profileImage,
+  formAvatarPhoto
+} from '../scripts/utils/constants.js';
 import { Card } from '../scripts/components/Card.js';
 import { FormValidator } from '../scripts/components/FormValidator.js';
 import Section from '../scripts/components/Section.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import Api from '../scripts/components/Api.js';
+
+const apiData = new Api(
+  {
+    link: "https://mesto.nomoreparties.co/v1/cohort-65",
+    token: "c2a28c16-df13-4b24-8ee0-81628722cf43",
+  }
+);
+// apiData.getUserProfile();
 
 // Валидация карточек
 const formProfileValidate = new FormValidator(objData, profileForm);
 formProfileValidate.enableValidation();
 const formPhotoValidate = new FormValidator(objData, formAddPhoto);
 formPhotoValidate.enableValidation();
+const formAvatarValidate = new FormValidator(objData, formAvatarPhoto);
+formAvatarValidate.enableValidation();
 
 //Данные пользователя
 const userInfo = new UserInfo(".profile__title", ".profile__subtitle");
@@ -77,8 +91,16 @@ const popupPlace = new PopupWithForm({
     popupPlace.close();
   }
 });
-
 popupPlace.setEventListeners();
+// Попап смены фото аватара
+const popupAvatar = new PopupWithForm({
+  popupSelector: '.profile-image-popup',
+  handleFormSubmit: (data) => {
+    popupAvatar.close();
+  }
+});
+popupAvatar.setEventListeners();
+
 
 
 // слушатель для попапа "Место"
@@ -95,3 +117,6 @@ profileRedaction.addEventListener("click", () => {
   formProfileValidate.resetValidation();
 });
 
+profileImage.addEventListener('click', () => {
+  popupAvatar.open();
+})

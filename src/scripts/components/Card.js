@@ -2,7 +2,6 @@ class Card {
   constructor({ data, selector, handleCardClick }) {
     this._data = data;
     this._name = data.name;
-    console.log(data.name);
     this._link = data.link;
     this._selector = selector;
     this.handleCardClick = handleCardClick;
