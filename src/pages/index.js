@@ -13,8 +13,10 @@ import {
   photoForPopup,
   textForPopup,
   photoElements,
+  profileAvatar,
+  formAvatarPhoto,
+  profileAvatarInput,
   profileImage,
-  formAvatarPhoto
 } from '../scripts/utils/constants.js';
 import { Card } from '../scripts/components/Card.js';
 import { FormValidator } from '../scripts/components/FormValidator.js';
@@ -30,21 +32,6 @@ const api = new Api(
     token: "c2a28c16-df13-4b24-8ee0-81628722cf43",
   }
 );
-
-/*
-  //Редактирование профиля
-  fetch('https://mesto.nomoreparties.co/v1/cohort-65/users/me', {
-  method: 'PATCH',
-  headers: {
-    authorization: 'c2a28c16-df13-4b24-8ee0-81628722cf43',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    name: 'Marie Skłodowska Curie',
-    about: 'Physicist and Chemist'
-  })
-});
-*/
 
 /*
 //Загрузка карточки на сервер
@@ -85,11 +72,8 @@ const createCard = (data) => {
 };
 
 
-let myInfo;
 Promise.all([api.getUserProfile(), api.getInitialCards()])
   .then(([objectInfo, cardArr]) => {
-    myInfo = objectInfo;
-
     userInfo.setUserInfo(objectInfo);
     cardList.renderItems(cardArr);
     console.log(objectInfo);
@@ -108,7 +92,6 @@ const cardList = new Section(
   },
   photoElements);
 
-
 //Попап фото
 const popupImage = new PopupWithImage(".photo-popup");
 popupImage.setEventListeners();
@@ -117,11 +100,33 @@ popupImage.setEventListeners();
 const popupProfile = new PopupWithForm({
   popupSelector: '.profile-popup',
   handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data);
-    popupProfile.close();
-  }
+    popupProfile.setUserUX(true);
+    api.setUserProfile(data)
+      .then((dataInfo) => {
+        userInfo.setUserInfo(dataInfo);
+        popupProfile.close();
+      })
+      .catch((error) => console.log(error))
+      .finally(() => popupProfile.setUserUX(false));
+  },
 });
 popupProfile.setEventListeners();
+
+// Попап смены фото аватара
+const popupAvatar = new PopupWithForm({
+  popupSelector: '.profile-image-popup',
+  handleFormSubmit: (data) => {
+    popupAvatar.setUserUX(true);
+    api.setUserAvatar(data)
+      .then((dataInfo) => {
+        userInfo.setUserInfo(dataInfo);
+        popupAvatar.close();
+      })
+      .catch((error) => console.log(error))
+      .finally(() => popupAvatar.setUserUX(false));
+  },
+});
+popupAvatar.setEventListeners();
 
 // Попап места
 const popupPlace = new PopupWithForm({
@@ -134,14 +139,7 @@ const popupPlace = new PopupWithForm({
   }
 });
 popupPlace.setEventListeners();
-// Попап смены фото аватара
-const popupAvatar = new PopupWithForm({
-  popupSelector: '.profile-image-popup',
-  handleFormSubmit: (data) => {
-    popupAvatar.close();
-  }
-});
-popupAvatar.setEventListeners();
+
 
 
 
@@ -150,7 +148,7 @@ addPhoto.addEventListener("click", () => {
   popupPlace.open();
   formPhotoValidate.resetValidation();
 });
-
+//Попап редактирование профиля
 profileRedaction.addEventListener("click", () => {
   const getUser = userInfo.getUserInfo();
   nameInput.value = getUser.name;
@@ -159,6 +157,7 @@ profileRedaction.addEventListener("click", () => {
   formProfileValidate.resetValidation();
 });
 
-profileImage.addEventListener('click', () => {
+profileAvatar.addEventListener('click', () => {
+  profileAvatarInput.value = profileImage.src;
   popupAvatar.open();
 })

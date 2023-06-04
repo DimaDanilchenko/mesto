@@ -35,15 +35,44 @@ export default class Api {
   }
     // Редактирование профиля
     setUserProfile(data) {
-      return fetch(`${this._address}/users/me`, {
+      return fetch(`${this._link}/users/me`, {
         method: 'PATCH',
         headers: {
           authorization: this._token,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+          name: data.popupName,
+          about: data.popupJob
+        })
+      })
+      .then(this._handleResponse)
+    }
+    //Изменение аватарки
+    setUserAvatar(data) {
+      return fetch(`${this._link}/users/me/avatar`, {
+        method: 'PATCH',
+        headers: {
+          authorization: this._token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          avatar: data.avatarLink,
+        })
+      })
+      .then(this._handleResponse)
+    }
+    //Добавление карточки
+    addNewCard(){
+      return fetch(`${this._link}/users/cards`, {
+        method: 'POST',
+        headers: {
+          authorization: this._token,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
           name: data.name,
-          about: data.about
+          link: data.link
         })
       })
       .then(this._handleResponse)
