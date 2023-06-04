@@ -19,17 +19,17 @@
         <div class="profile">
           <div class="profile__info">
             <div class="profile__avatar">
-              <img src="<%=require('./images/Avatar.png')%>" class="profile__image">
+              <img src="" class="profile__image">
               <img src="<%=require('./images/Vector.png')%>" class="profile__vector-image">
             </div>
             <div class="profile__account">
               <div class="profile__text">
-                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <h1 class="profile__title"></h1>
                 <button class="profile__redaction" type="button" aria-label="profile-redaction">
                   <img src="<%=require('./images/Redaction.svg')%>" alt="Изменить профиль" class="profile__redaction-image">
                 </button>
               </div>
-              <p class="profile__subtitle">Исследователь океана</p>
+              <p class="profile__subtitle"></p>
             </div>
           </div>
           <button class="profile__add" type="button">
@@ -128,7 +128,10 @@
       <img alt="photo" class="element__image">
       <div class="element__block">
         <h2 class="element__text"></h2>
-        <button class="element__heart" type="button"></button>
+        <div class="element__heart-area">
+          <button class="element__heart" type="button"></button>
+          <p class="element__heart-counter">1</p>
+        </div>
       </div>
     </div>
   </template>

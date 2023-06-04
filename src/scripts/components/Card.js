@@ -1,10 +1,11 @@
 class Card {
-  constructor({ data, selector, handleCardClick }) {
+  constructor({ data, selector, handleCardClick, handleDeleteCard }) {
     this._data = data;
     this._name = data.name;
     this._link = data.link;
     this._selector = selector;
     this.handleCardClick = handleCardClick;
+    this.handleDeleteCard = handleDeleteCard;
   };
   _getElement() {
     const cardElement = document.querySelector(this._selector).content.querySelector('.element').cloneNode(true);
