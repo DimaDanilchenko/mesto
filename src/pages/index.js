@@ -28,8 +28,8 @@ import Api from '../scripts/components/Api.js';
 
 const api = new Api(
   {
-    link: "https://mesto.nomoreparties.co/v1/cohort-65",
-    token: "c2a28c16-df13-4b24-8ee0-81628722cf43",
+    link: "https://mesto.nomoreparties.co/v1/cohort-69",
+    token: "b0a021b8-85d2-4df0-a58b-761352eca6a6",
   }
 );
 
