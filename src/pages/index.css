@@ -27,12 +27,16 @@
 @import url(../blocks/profile-image-popup/__input/profile-image-popup__input.css);
 @import url(../blocks/profile-image-popup/__save/profile-image-popup__save.css);
 @import url(../blocks/profile-image-popup/__title/profile-image-popup__title.css);
+@import url(../blocks/profile-image-popup/__close/profile-image-popup__close.css);
+@import url(../blocks/profile-image-popup/__image/profile-image-popup__image.css);
 
 @import url(../blocks/delete-photo-popup/delete-photo-popup.css);
 @import url(../blocks/delete-photo-popup/__container/delete-photo-popup__container.css);
 @import url(../blocks/delete-photo-popup/__form/delete-photo-popup__form.css);
 @import url(../blocks/delete-photo-popup/__save/delete-photo-popup__save.css);
 @import url(../blocks/delete-photo-popup/__title/delete-photo-popup__title.css);
+@import url(../blocks/delete-photo-popup/__close/delete-photo-popup__close.css);
+@import url(../blocks/delete-photo-popup/__image/delete-photo-popup__image.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
