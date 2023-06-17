@@ -1,7 +1,6 @@
-import './index.css'; // добавьте импорт главного файла стилей
+import './index.css';
 
 import {
-  initialCards,
   objData,
   profileForm,
   formAddPhoto,
@@ -25,6 +24,7 @@ import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import Api from '../scripts/components/Api.js';
+import PopupSubmit from '../scripts/components/PopupSubmit';
 
 const api = new Api(
   {
@@ -32,48 +32,13 @@ const api = new Api(
     token: "b0a021b8-85d2-4df0-a58b-761352eca6a6",
   }
 );
-
-/*
-//Загрузка карточки на сервер
-fetch('https://mesto.nomoreparties.co/v1/cohort-65/cards', {
-  method: 'POST',
-  headers: {
-    authorization: 'c2a28c16-df13-4b24-8ee0-81628722cf43',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    name: 'Дима Пример',
-    link: 'https://Physicist_and_Chemist.com'
-  })
-});
-*/
-
-// Валидация карточек
-const formProfileValidate = new FormValidator(objData, profileForm);
-formProfileValidate.enableValidation();
-const formPhotoValidate = new FormValidator(objData, formAddPhoto);
-formPhotoValidate.enableValidation();
-const formAvatarValidate = new FormValidator(objData, formAvatarPhoto);
-formAvatarValidate.enableValidation();
-
 //Данные пользователя
 const userInfo = new UserInfo(".profile__title", ".profile__subtitle", ".profile__image");
 
-// Создание карточки
-const createCard = (data) => {
-  const card = new Card({
-    data: data,
-    selector: '.element-template_type_default',
-    handleCardClick: (data) => {
-      popupImage.open(data)
-    },
-  })
-  return card.generate();
-};
-
-
+let myAccountInfo;
 Promise.all([api.getUserProfile(), api.getInitialCards()])
   .then(([objectInfo, cardArr]) => {
+    myAccountInfo = objectInfo;
     userInfo.setUserInfo(objectInfo);
     cardList.renderItems(cardArr);
     console.log(objectInfo);
@@ -83,11 +48,61 @@ Promise.all([api.getUserProfile(), api.getInitialCards()])
     console.log(error);
   });
 
+// Валидация карточек
+const formProfileValidate = new FormValidator(objData, profileForm);
+formProfileValidate.enableValidation();
+const formPhotoValidate = new FormValidator(objData, formAddPhoto);
+formPhotoValidate.enableValidation();
+const formAvatarValidate = new FormValidator(objData, formAvatarPhoto);
+formAvatarValidate.enableValidation();
+
+
+
+// Создание карточки
+const createCard = (data) => {
+  const card = new Card({
+    data: data,
+    myAccountInfo: myAccountInfo,
+    selector: '.element-template_type_default',
+    handleCardClick: (card) => {
+      popupImage.open(card)
+    },
+    handleDeleteCard: (cardId) => {
+      popupDelCard.setSubmitAction(() => {
+        api.removeCard(cardId)
+          .then(() => {
+            card._remove();
+            popupDelCard.close();
+          })
+          .catch(() => {
+            console.log("Ошибка удаления");
+          });
+      });
+      popupDelCard.open();
+    },
+    handlePutLike: () => {
+      api.addLikeCard(card.getCurrentCard()._id)
+        .then((itemCard) => {
+          card.handleLike(itemCard);
+        })
+        .catch(() => console.log("Ошибка постановки лайка"));
+    },
+    handleDelLike: () => {
+      api.removeLikeCard(card.getCurrentCard()._id)
+        .then((itemCard) => {
+          card.handleLike(itemCard);
+        })
+        .catch(() => console.log("Ошибка снятия лайка"));
+    },
+  })
+  return card.generate();
+};
+
 const cardList = new Section(
   {
     renderer: (data) => {
       createCard(data);
-      cardList.addItem(createCard(data));
+      cardList.addItemAppend(createCard(data));
     },
   },
   photoElements);
@@ -95,6 +110,12 @@ const cardList = new Section(
 //Попап фото
 const popupImage = new PopupWithImage(".photo-popup");
 popupImage.setEventListeners();
+
+// Инициализация попапа "Удаление карточки"
+const popupDelCard = new PopupSubmit({
+  popupSelector: ".delete-photo-popup",
+});
+popupDelCard.setEventListeners();
 
 //Попап профиля
 const popupProfile = new PopupWithForm({
@@ -118,8 +139,8 @@ const popupAvatar = new PopupWithForm({
   handleFormSubmit: (data) => {
     popupAvatar.setUserUX(true);
     api.setUserAvatar(data)
-      .then((dataInfo) => {
-        userInfo.setUserInfo(dataInfo);
+      .then((objectInfo) => {
+        userInfo.setUserInfo(objectInfo);
         popupAvatar.close();
       })
       .catch((error) => console.log(error))
@@ -132,15 +153,18 @@ popupAvatar.setEventListeners();
 const popupPlace = new PopupWithForm({
   popupSelector: '.add-photo-popup',
   handleFormSubmit: (data) => {
-    console.log(data);
-    const newCard = createCard(data);
-    cardList.addItem(newCard);
-    popupPlace.close();
-  }
+    popupPlace.setUserUX(true);
+    api.addNewCard(data)
+      .then((itemCard) => {
+        const newCard = createCard(itemCard);
+        cardList.addItem(newCard);
+        popupPlace.close();
+      })
+      .catch((error) => console.log(error))
+      .finally(() => popupPlace.setUserUX(false));
+  },
 });
 popupPlace.setEventListeners();
-
-
 
 
 // слушатель для попапа "Место"
@@ -158,6 +182,5 @@ profileRedaction.addEventListener("click", () => {
 });
 
 profileAvatar.addEventListener('click', () => {
-  profileAvatarInput.value = profileImage.src;
   popupAvatar.open();
 })

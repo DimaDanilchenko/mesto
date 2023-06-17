@@ -45,6 +45,7 @@
 @import url(../blocks/element/__heart-counter/element__heart-counter.css);
 
 @import url(../blocks/element/__delete/element__delete.css);
+@import url(../blocks/element/__delete/_active/element__delete_active.css);
 
 
 @import url(../blocks/footer/footer.css);
